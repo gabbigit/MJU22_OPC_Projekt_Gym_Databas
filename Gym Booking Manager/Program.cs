@@ -50,13 +50,7 @@ namespace Gym_Booking_Manager
                 switch (option)
                 {
                     case 1:
-                        if (user.GetPerm() == 2)
-                        {
-                            Console.WriteLine("Access.");
-                        }
-                        else
-                            Console.WriteLine("No Access.");
-                        //Console.WriteLine("Option 1");
+                        gym.Delete<Space>(hall);
                         break;
                     case 2:
                         Console.WriteLine("Option 2");
