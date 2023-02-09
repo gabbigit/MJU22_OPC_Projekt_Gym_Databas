@@ -18,7 +18,7 @@ namespace Gym_Booking_Manager
 
         public void ViewSchedule(User user)
         {
-            if (user.perm == 0)
+            if (user.GetPerm() == 0)
             {
                 Console.WriteLine("You are not allowed to view the schedule");
             }
@@ -33,7 +33,7 @@ namespace Gym_Booking_Manager
         }
         public void AddActivity(User user, GroupActivity activity)
         {
-            if (user.perm == 0)
+            if (user.GetPerm() == 0)
             {
                 Console.WriteLine("You are not allowed to add activities");
             }
@@ -44,7 +44,7 @@ namespace Gym_Booking_Manager
         }
         public void RemoveActivity(User user, GroupActivity activityID)
         {
-            if (user.perm == 0)
+            if (user.GetPerm() == 0)
             {
                 Console.WriteLine("You are not allowed to remove activities");
             }
@@ -55,7 +55,7 @@ namespace Gym_Booking_Manager
         }
         public void UpdateActivity(User user, GroupActivity activityID, GroupActivity activity)
         {
-            if (user.perm == 0)
+            if (user.GetPerm() == 0)
             {
                 Console.WriteLine("You are not allowed to update activities");
             }
