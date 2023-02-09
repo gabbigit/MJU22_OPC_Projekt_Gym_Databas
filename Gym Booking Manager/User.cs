@@ -16,6 +16,7 @@ namespace Gym_Booking_Manager
         public string phone { get; set; }
         public string email { get; set; }
         protected int perm;
+        public Guid Id { get; set; }
 
         protected User(string name)
         {
@@ -23,6 +24,7 @@ namespace Gym_Booking_Manager
             this.phone = "0";
             this.email = "test@test";
             this.perm = 0;
+            this.Id = Guid.NewGuid();
         }
 
         public static User ChooseUserType(string name, int choice)
