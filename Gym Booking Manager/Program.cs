@@ -11,6 +11,7 @@ namespace Gym_Booking_Manager
 
         static void Main(string[] args)
         {
+/*
             Customer ruben = new Customer("Ruben");
             Customer david = new Customer("David");
             Customer adam = new Customer("Adam");
@@ -18,10 +19,6 @@ namespace Gym_Booking_Manager
             Console.WriteLine(timeSlot);
             Instructor instructor = new Instructor("Tim");
             Space hall = new Space(0, "Hall");
-            Console.WriteLine(hall.CSVify());
-            GymDatabaseContext gym = new GymDatabaseContext();
-            Space gymHall = new(0, "Gym Hall");
-            gym.Create<Space>(hall);
             Equipment treadmill = new Equipment(1);
             GroupActivity activity1 = new GroupActivity("A1", 2, timeSlot, instructor, hall, treadmill);
             activity1.SignUp(ruben);
@@ -31,6 +28,14 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine(c.name);
             }
+*/
+
+            Console.WriteLine("Enter your name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
+            int choice = int.Parse(Console.ReadLine());
+
+            User user = User.ChooseUserType(name, choice);
 
             int option = 0;
             do
