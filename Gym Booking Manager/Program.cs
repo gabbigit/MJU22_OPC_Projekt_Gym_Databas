@@ -35,7 +35,7 @@ namespace Gym_Booking_Manager
             Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
             int choice = int.Parse(Console.ReadLine());
 
-            User user = User.ChooseUserType(name, choice); adasddsadas
+            User user = User.ChooseUserType(name, choice);
 
             int option = 0;
             do
