@@ -11,12 +11,26 @@ namespace Gym_Booking_Manager
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter your name: ");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
-            int choice = int.Parse(Console.ReadLine());
-
-            User user = User.ChooseUserType(name, choice);
+            Customer ruben = new Customer("Ruben");
+            Customer david = new Customer("David");
+            Customer adam = new Customer("Adam");
+            TimeSlot timeSlot = new TimeSlot(new DateTime(2023, 10, 10, 20, 30, 00), new DateTime(2023, 10, 10, 21, 00, 00));
+            Console.WriteLine(timeSlot);
+            Instructor instructor = new Instructor("Tim");
+            Space hall = new Space(0, "Hall");
+            Console.WriteLine(hall.CSVify());
+            GymDatabaseContext gym = new GymDatabaseContext();
+            Space gymHall = new(0, "Gym Hall");
+            gym.Create<Space>(hall);
+            Equipment treadmill = new Equipment(1);
+            GroupActivity activity1 = new GroupActivity("A1", 2, timeSlot, instructor, hall, treadmill);
+            activity1.SignUp(ruben);
+            activity1.SignUp(david);
+            activity1.SignUp(adam);
+            foreach(Customer c in activity1.Participants)
+            {
+                Console.WriteLine(c.name);
+            }
 
             int option = 0;
             do
@@ -31,13 +45,7 @@ namespace Gym_Booking_Manager
                 switch (option)
                 {
                     case 1:
-                        if (user.GetPerm() == 2)
-                        {
-                            Console.WriteLine("Access.");
-                        }
-                        else
-                            Console.WriteLine("No Access.");
-                        //Console.WriteLine("Option 1");
+                        gym.Delete<Space>(hall);
                         break;
                     case 2:
                         Console.WriteLine("Option 2");
