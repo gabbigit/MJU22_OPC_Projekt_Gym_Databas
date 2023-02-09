@@ -15,53 +15,54 @@ namespace Gym_Booking_Manager
     internal class GroupSchedule
     {
         private List<GroupActivity> activities;
-    }
-    public void ViewSchedule(User user)
-    {
-        if (user.perm == 0)
+
+        public void ViewSchedule(User user)
         {
-            Console.WriteLine("You are not allowed to view the schedule");
-        }
-        else
-        {
-            Console.WriteLine("Schedule:");
-            foreach (GroupActivity activity in activities)
+            if (user.perm == 0)
             {
-                Console.WriteLine(activity);
+                Console.WriteLine("You are not allowed to view the schedule");
+            }
+            else
+            {
+                Console.WriteLine("Schedule:");
+                foreach (GroupActivity activity in activities)
+                {
+                    Console.WriteLine(activity);
+                }
             }
         }
-    }
-    public void AddActivity(User user, GroupActivity activity)
-    {
-        if (user.perm == 0)
+        public void AddActivity(User user, GroupActivity activity)
         {
-            Console.WriteLine("You are not allowed to add activities");
+            if (user.perm == 0)
+            {
+                Console.WriteLine("You are not allowed to add activities");
+            }
+            else
+            {
+                activities.Add(activity);
+            }
         }
-        else
+        public void RemoveActivity(User user, GroupActivity activityID)
         {
-            activities.Add(activity);
+            if (user.perm == 0)
+            {
+                Console.WriteLine("You are not allowed to remove activities");
+            }
+            else
+            {
+                activities.Remove(activityID);
+            }
         }
-    }
-    public void RemoveActivity(User user, GroupActivity activityID)
-    {
-        if (user.perm == 0)
+        public void UpdateActivity(User user, GroupActivity activityID, GroupActivity activity)
         {
-            Console.WriteLine("You are not allowed to remove activities");
-        }
-        else
-        {
-            activities.Remove(activityID);
-        }
-    }
-    public void UpdateActivity(User user, GroupActivity activityID, GroupActivity activity)
-    {
-        if (user.perm == 0)
-        {
-            Console.WriteLine("You are not allowed to update activities");
-        }
-        else
-        {
-            //ToDO
+            if (user.perm == 0)
+            {
+                Console.WriteLine("You are not allowed to update activities");
+            }
+            else
+            {
+                //ToDO
+            }
         }
     }
 }

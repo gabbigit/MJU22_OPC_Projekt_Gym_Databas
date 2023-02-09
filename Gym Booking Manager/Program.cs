@@ -11,6 +11,22 @@ namespace Gym_Booking_Manager
 
         static void Main(string[] args)
         {
+            Customer ruben = new Customer("Ruben");
+            Customer david = new Customer("David");
+            Customer adam = new Customer("Adam");
+            TimeSlot timeSlot = new TimeSlot(new DateTime(2023, 10, 10, 20, 30, 00), new DateTime(2023, 10, 10, 21, 00, 00));
+            Console.WriteLine(timeSlot);
+            Instructor instructor = new Instructor("Tim");
+            Space hall = new Space(0, "Hall");
+            Equipment treadmill = new Equipment(1);
+            GroupActivity activity1 = new GroupActivity("A1", 2, timeSlot, instructor, hall, treadmill);
+            activity1.SignUp(ruben);
+            activity1.SignUp(david);
+            activity1.SignUp(adam);
+            foreach(Customer c in activity1.Participants)
+            {
+                Console.WriteLine(c.name);
+            }
 
             int option = 0;
             do
