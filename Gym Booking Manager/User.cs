@@ -46,27 +46,39 @@ namespace Gym_Booking_Manager
             return perm;
         }
     }
-    internal class Customer : User
+    internal class Customer : User, ICSVable
     {
         public Customer(string name) : base(name)
         {
             this.perm = 0;
         }
+        public string CSVify()
+        {
+            return $"{this.name},{this.phone},{this.email},{this.perm},{this.Id}";
+        }
     }
 
-    internal class Staff : User
+    internal class Staff : User, ICSVable
     {
         public Staff(string name) : base(name)
         {
             this.perm = 1;
         }
+        public string CSVify()
+        {
+            return $"{this.name},{this.phone},{this.email},{this.perm},{this.Id}";
+        }
     }
 
-    internal class Admin : User
+    internal class Admin : User, ICSVable
     {
         public Admin(string name) : base(name)
         {
             this.perm = 2;
+        }
+        public string CSVify()
+        {
+            return $"{this.name},{this.phone},{this.email},{this.perm},{this.Id}";
         }
     }
 
