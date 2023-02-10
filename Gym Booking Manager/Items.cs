@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,11 @@ namespace Gym_Booking_Manager
         {
             this.quantity = 1;
             this.name = name;
+        }
+        //added to be able to print instructor name
+        public override string ToString()
+        {
+            return $"{name}";
         }
     }
 }
