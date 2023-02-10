@@ -43,6 +43,11 @@ namespace Gym_Booking_Manager
                 Console.WriteLine("Activity is full");
             }
         }
+        //For future use 
+        public void Print()
+        {
+            Console.WriteLine($"activity: {activityID} with instructor: {instructor.ToString()}, time: {timeSlot}, space: {space}");
+        }
     }
    
 }
