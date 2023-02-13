@@ -52,21 +52,28 @@ namespace Gym_Booking_Manager
             Console.WriteLine(timeSlot);
             Console.WriteLine(timeSlot2);
             Console.WriteLine(timeSlot3);
+            /* ---------------------------------------------------->START<------------------------------------------------------------------ */
 
-            Console.WriteLine("Enter your name: ");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter your phone number: ");
-            string phone = Console.ReadLine();
-            Console.WriteLine("Enter your email: ");
-            string email = Console.ReadLine();
-            Guid id = Guid.NewGuid();
-            Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
-            int choice = int.Parse(Console.ReadLine());
-            Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
+            Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
+            int answer = Convert.ToInt32(Console.ReadLine());
+            if (answer == 1) {
+
+
+                User user = User.Create();
+                Console.WriteLine($"{user.GetType()}");
+                //User UserType = user.GetType();
+                //Console.WriteLine();
+                userDB.Create <Admin> (user as Admin);
             
+            
+            }
+            else if (answer == 2) { throw new NotImplementedException(); }
 
-            User user = User.ChooseUserType(name, phone, email, id, choice);
-            userDB.Create<Customer>(user as Customer);
+
+            //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
+            //User user = User.ChooseUserType(name, phone, email, id, choice);
+            //userDB.Create<Customer>(user as Customer);
+
             int option = 0;
             do
             {
