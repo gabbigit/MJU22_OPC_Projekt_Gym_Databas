@@ -6,7 +6,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>162</x>
-      <y>837</y>
+      <y>783</y>
       <w>198</w>
       <h>72</h>
     </coordinates>
@@ -23,7 +23,7 @@ staff(coach, PT)
     <id>UMLClass</id>
     <coordinates>
       <x>666</x>
-      <y>900</y>
+      <y>846</y>
       <w>90</w>
       <h>135</h>
     </coordinates>
@@ -42,7 +42,7 @@ staff(coach, PT)
     <id>UMLClass</id>
     <coordinates>
       <x>1071</x>
-      <y>972</y>
+      <y>918</y>
       <w>360</w>
       <h>171</h>
     </coordinates>
@@ -63,7 +63,7 @@ staff(coach, PT)
     <id>UMLClass</id>
     <coordinates>
       <x>558</x>
-      <y>756</y>
+      <y>702</y>
       <w>396</w>
       <h>126</h>
     </coordinates>
@@ -74,6 +74,7 @@ IReservable
 +MakeReservation(in timeSlot : DateTime, in reservingEntity ??)
 +CancelReservation(in timeSlot : Time, in actor ??) ?
 +ViewTimeTable(in observer : User)
++ViewItem() : ??
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -81,7 +82,7 @@ IReservable
     <id>Relation</id>
     <coordinates>
       <x>531</x>
-      <y>1026</y>
+      <y>972</y>
       <w>153</w>
       <h>27</h>
     </coordinates>
@@ -92,7 +93,7 @@ IReservable
     <id>UMLUseCase</id>
     <coordinates>
       <x>162</x>
-      <y>999</y>
+      <y>945</y>
       <w>108</w>
       <h>198</h>
     </coordinates>
@@ -107,7 +108,7 @@ IReservable
     <id>UMLUseCase</id>
     <coordinates>
       <x>396</x>
-      <y>801</y>
+      <y>747</y>
       <w>126</w>
       <h>216</h>
     </coordinates>
@@ -126,7 +127,7 @@ IReservable
     <id>UMLNote</id>
     <coordinates>
       <x>144</x>
-      <y>954</y>
+      <y>900</y>
       <w>243</w>
       <h>27</h>
     </coordinates>
@@ -138,7 +139,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>495</x>
-      <y>495</y>
+      <y>441</y>
       <w>261</w>
       <h>198</h>
     </coordinates>
@@ -162,7 +163,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>495</x>
-      <y>684</y>
+      <y>630</y>
       <w>36</w>
       <h>63</h>
     </coordinates>
@@ -173,7 +174,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>720</x>
-      <y>684</y>
+      <y>630</y>
       <w>27</w>
       <h>90</h>
     </coordinates>
@@ -184,7 +185,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>837</x>
-      <y>954</y>
+      <y>900</y>
       <w>189</w>
       <h>189</h>
     </coordinates>
@@ -208,7 +209,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1017</x>
-      <y>1026</y>
+      <y>972</y>
       <w>72</w>
       <h>27</h>
     </coordinates>
@@ -219,7 +220,7 @@ bg=blue</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1089</x>
-      <y>891</y>
+      <y>837</y>
       <w>279</w>
       <h>63</h>
     </coordinates>
@@ -234,7 +235,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>405</x>
-      <y>378</y>
+      <y>324</y>
       <w>216</w>
       <h>72</h>
     </coordinates>
@@ -249,7 +250,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>504</x>
-      <y>441</y>
+      <y>387</y>
       <w>81</w>
       <h>72</h>
     </coordinates>
@@ -260,7 +261,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>423</x>
-      <y>243</y>
+      <y>189</y>
       <w>180</w>
       <h>72</h>
     </coordinates>
@@ -276,7 +277,7 @@ bg=blue</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>504</x>
-      <y>306</y>
+      <y>252</y>
       <w>36</w>
       <h>90</h>
     </coordinates>
@@ -289,7 +290,7 @@ m2=*</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>279</x>
-      <y>522</y>
+      <y>468</y>
       <w>90</w>
       <h>90</h>
     </coordinates>
@@ -305,7 +306,7 @@ Studio</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>360</x>
-      <y>540</y>
+      <y>486</y>
       <w>153</w>
       <h>27</h>
     </coordinates>
@@ -316,7 +317,7 @@ Studio</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>810</x>
-      <y>54</y>
+      <y>0</y>
       <w>540</w>
       <h>603</h>
     </coordinates>
@@ -330,7 +331,7 @@ transparency=80</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1134</x>
-      <y>90</y>
+      <y>36</y>
       <w>180</w>
       <h>99</h>
     </coordinates>
@@ -347,7 +348,7 @@ IDatabase
     <id>UMLClass</id>
     <coordinates>
       <x>1107</x>
-      <y>234</y>
+      <y>180</y>
       <w>225</w>
       <h>162</h>
     </coordinates>
@@ -369,7 +370,7 @@ IDatabase
     <id>UMLClass</id>
     <coordinates>
       <x>819</x>
-      <y>90</y>
+      <y>36</y>
       <w>261</w>
       <h>117</h>
     </coordinates>
@@ -388,7 +389,7 @@ IDatabase
     <id>Relation</id>
     <coordinates>
       <x>1197</x>
-      <y>180</y>
+      <y>126</y>
       <w>27</w>
       <h>72</h>
     </coordinates>
@@ -399,7 +400,7 @@ IDatabase
     <id>Relation</id>
     <coordinates>
       <x>1071</x>
-      <y>135</y>
+      <y>81</y>
       <w>81</w>
       <h>27</h>
     </coordinates>
@@ -410,7 +411,7 @@ IDatabase
     <id>UMLClass</id>
     <coordinates>
       <x>873</x>
-      <y>459</y>
+      <y>405</y>
       <w>450</w>
       <h>153</h>
     </coordinates>
@@ -431,7 +432,7 @@ IDatabase
     <id>Relation</id>
     <coordinates>
       <x>1215</x>
-      <y>387</y>
+      <y>333</y>
       <w>36</w>
       <h>90</h>
     </coordinates>
@@ -444,7 +445,7 @@ m2=*</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1161</x>
-      <y>711</y>
+      <y>657</y>
       <w>108</w>
       <h>72</h>
     </coordinates>
@@ -459,7 +460,7 @@ ICSVable
     <id>Relation</id>
     <coordinates>
       <x>747</x>
-      <y>648</y>
+      <y>594</y>
       <w>432</w>
       <h>81</h>
     </coordinates>
@@ -470,7 +471,7 @@ ICSVable
     <id>Relation</id>
     <coordinates>
       <x>1197</x>
-      <y>603</y>
+      <y>549</y>
       <w>45</w>
       <h>126</h>
     </coordinates>
@@ -481,7 +482,7 @@ ICSVable
     <id>UMLClass</id>
     <coordinates>
       <x>324</x>
-      <y>63</y>
+      <y>9</y>
       <w>189</w>
       <h>171</h>
     </coordinates>
@@ -492,7 +493,7 @@ ICSVable
     <id>Relation</id>
     <coordinates>
       <x>504</x>
-      <y>108</y>
+      <y>54</y>
       <w>333</w>
       <h>27</h>
     </coordinates>
@@ -503,7 +504,7 @@ ICSVable
     <id>UMLClass</id>
     <coordinates>
       <x>171</x>
-      <y>612</y>
+      <y>558</y>
       <w>135</w>
       <h>72</h>
     </coordinates>
@@ -516,7 +517,7 @@ IReservingEntity
     <id>UMLClass</id>
     <coordinates>
       <x>351</x>
-      <y>1017</y>
+      <y>963</y>
       <w>189</w>
       <h>216</h>
     </coordinates>
@@ -530,8 +531,6 @@ IReservingEntity
 +AddActivity()
 +RemoveActivity()
 +ChangeActivity()
-+MakeReservation()
-+CancelReservation()
 +ViewItem()
 +AddUser()
 +DeleteUser()´
@@ -542,7 +541,7 @@ IReservingEntity
     <id>UMLClass</id>
     <coordinates>
       <x>567</x>
-      <y>1071</y>
+      <y>1017</y>
       <w>144</w>
       <h>153</h>
     </coordinates>
@@ -552,9 +551,6 @@ IReservingEntity
 
 --
 +ViewGroupSchedule()
-+MakeReservation()
-+CancelReservation()
-+ViewItem()
 +PurchaseMembership()
 +PurchaseDayPass()</panel_attributes>
     <additional_attributes/>
@@ -563,7 +559,7 @@ IReservingEntity
     <id>UMLClass</id>
     <coordinates>
       <x>531</x>
-      <y>891</y>
+      <y>837</y>
       <w>99</w>
       <h>90</h>
     </coordinates>
@@ -579,7 +575,7 @@ IReservingEntity
     <id>UMLClass</id>
     <coordinates>
       <x>738</x>
-      <y>1080</y>
+      <y>1026</y>
       <w>90</w>
       <h>81</h>
     </coordinates>
@@ -595,7 +591,7 @@ IReservingEntity
     <id>Relation</id>
     <coordinates>
       <x>621</x>
-      <y>1026</y>
+      <y>972</y>
       <w>90</w>
       <h>63</h>
     </coordinates>
@@ -606,7 +602,7 @@ IReservingEntity
     <id>Relation</id>
     <coordinates>
       <x>738</x>
-      <y>1026</y>
+      <y>972</y>
       <w>45</w>
       <h>72</h>
     </coordinates>
@@ -617,7 +613,7 @@ IReservingEntity
     <id>Relation</id>
     <coordinates>
       <x>513</x>
-      <y>972</y>
+      <y>918</y>
       <w>45</w>
       <h>63</h>
     </coordinates>
@@ -628,7 +624,7 @@ IReservingEntity
     <id>UMLClass</id>
     <coordinates>
       <x>306</x>
-      <y>729</y>
+      <y>675</y>
       <w>198</w>
       <h>72</h>
     </coordinates>
@@ -643,7 +639,7 @@ IServicable
     <id>UMLObject</id>
     <coordinates>
       <x>981</x>
-      <y>711</y>
+      <y>657</y>
       <w>144</w>
       <h>81</h>
     </coordinates>
@@ -659,7 +655,7 @@ IComparable
     <id>Relation</id>
     <coordinates>
       <x>747</x>
-      <y>684</y>
+      <y>630</y>
       <w>252</w>
       <h>45</h>
     </coordinates>
@@ -670,7 +666,7 @@ IComparable
     <id>Relation</id>
     <coordinates>
       <x>1044</x>
-      <y>603</y>
+      <y>549</y>
       <w>45</w>
       <h>126</h>
     </coordinates>
@@ -683,7 +679,7 @@ IComparable
     <id>UMLObject</id>
     <coordinates>
       <x>135</x>
-      <y>414</y>
+      <y>360</y>
       <w>144</w>
       <h>81</h>
     </coordinates>
@@ -693,5 +689,61 @@ IComparable
 --
 +CompareTo(Object obj)</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>531</x>
+      <y>819</y>
+      <w>126</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;210.0;120.0;140.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>639</x>
+      <y>819</y>
+      <w>27</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;220.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>783</x>
+      <y>1125</y>
+      <w>243</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>ViewGroupSchedule == ViewSchedule?
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>702</x>
+      <y>1125</y>
+      <w>99</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1008</x>
+      <y>999</y>
+      <w>81</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;140.0</additional_attributes>
   </element>
 </diagram>

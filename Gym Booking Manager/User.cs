@@ -4,13 +4,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static Gym_Booking_Manager.Space;
 
 #if DEBUG
 [assembly: InternalsVisibleTo("Tests")]
 #endif
 namespace Gym_Booking_Manager
 {
-    internal abstract class User
+    internal abstract class User : ICSVable
     {
         public string name { get; set; }
         public string phone { get; set; }
@@ -24,15 +25,19 @@ namespace Gym_Booking_Manager
             this.phone = "0";
             this.email = "test@test";
             this.perm = 0;
-            this.Id = Guid.NewGuid();
+            this.Id = new Guid();
+        }
+        public string CSVify()
+        {
+            throw new NotImplementedException();
         }
 
-        public static User ChooseUserType(string name, int choice)
+        public static User ChooseUserType(string name, string phone, string email, Guid Id, int choice)
         {
             switch (choice)
             {
                 case 0:
-                    return new Customer(name);
+                    return new Customer(name, phone, email,Id);
                 case 1:
                     return new Staff(name);
                 case 2:
@@ -46,17 +51,6 @@ namespace Gym_Booking_Manager
             return perm;
         }
     }
-    internal class Customer : User, ICSVable
-    {
-        public Customer(string name) : base(name)
-        {
-            this.perm = 0;
-        }
-        public string CSVify()
-        {
-            return $"{this.name},{this.phone},{this.email},{this.perm},{this.Id}";
-        }
-    }
 
     internal class Staff : User, ICSVable
     {
@@ -64,21 +58,21 @@ namespace Gym_Booking_Manager
         {
             this.perm = 1;
         }
-        public string CSVify()
+        public new string CSVify()
         {
-            return $"{this.name},{this.phone},{this.email},{this.perm},{this.Id}";
+            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
         }
     }
-
+    
     internal class Admin : User, ICSVable
     {
         public Admin(string name) : base(name)
         {
             this.perm = 2;
         }
-        public string CSVify()
+        public new string CSVify()
         {
-            return $"{this.name},{this.phone},{this.email},{this.perm},{this.Id}";
+            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
         }
     }
 
