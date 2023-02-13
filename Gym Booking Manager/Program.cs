@@ -36,16 +36,22 @@ namespace Gym_Booking_Manager
             //userDB.Create<Customer>(david);
             //userDB.Create<Customer>(ruben);
             GymDatabaseContext spaceDB = new GymDatabaseContext();
-            spaceDB.Read<Space>();
             foreach (Space s in spaceDB.Read<Space>())
             {
                 Console.WriteLine(s);
             }
-            foreach (Customer c in userDB.Read<Customer>())
+            foreach (Customer c in userDB.Read<Customer>("email", "jsakda@se.se"))
             {
                 Console.WriteLine(c);
             }
-            Console.WriteLine(Guid.NewGuid());
+            DateTime d1 = new DateTime(year: 2023, month: 10, day: 10, hour: 12, minute: 00, second:00);
+            DateTime d2 = new DateTime(year: 2023, month: 10, day: 11);
+            TimeSlot timeSlot = new TimeSlot(d1);
+            TimeSlot timeSlot2 = new TimeSlot(d2);
+            TimeSlot timeSlot3 = new TimeSlot(DateTime.Now);
+            Console.WriteLine(timeSlot);
+            Console.WriteLine(timeSlot2);
+            Console.WriteLine(timeSlot3);
 
             Console.WriteLine("Enter your name: ");
             string name = Console.ReadLine();
@@ -56,9 +62,11 @@ namespace Gym_Booking_Manager
             Guid id = Guid.NewGuid();
             Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
             int choice = int.Parse(Console.ReadLine());
-        
+            Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
+            
 
             User user = User.ChooseUserType(name, phone, email, id, choice);
+            userDB.Create<Customer>(user as Customer);
             int option = 0;
             do
             {

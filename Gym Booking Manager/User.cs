@@ -76,4 +76,16 @@ namespace Gym_Booking_Manager
         }
     }
 
+    internal class Service : User, ICSVable
+    {
+        public Service(string name) : base(name)
+        {
+            this.perm = 3;
+        }
+        public new string CSVify()
+        {
+            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
+        }
+    }
+
 }

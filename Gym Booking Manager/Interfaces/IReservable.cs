@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace Gym_Booking_Manager
 {
+    // Interface for classes of objects that Customers can reserve.
+    // I.E MakeReservation(User that does the reservvation), CancelReservation(TODO), ViewTimeTable(TODO)
     internal interface IReservable
     {
         void MakeReservation(IReservingEntity owner);

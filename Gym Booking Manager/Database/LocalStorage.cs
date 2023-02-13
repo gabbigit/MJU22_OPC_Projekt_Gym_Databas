@@ -26,20 +26,29 @@ namespace Gym_Booking_Manager
     {
 
         public DbSet<Space> spaces;
-        public DbSet<Customer> customers;
+        public DbSet<Customer> customer;
+        public DbSet<Staff> staffs;
+        public DbSet<Admin> admins;
+        public DbSet<Service> service;
         // public DbSet<Equipment> equipment; ?
 
         static private readonly char sep = Path.DirectorySeparatorChar;
         static private readonly string storage = $"GymDB{sep}storage";
         static private readonly string fpathSpace = $"{storage}{sep}space.csv";
-        static private readonly string fpathCustomer = $"{storage}{sep}customers.csv";
+        static private readonly string fpathCustomer = $"{storage}{sep}customer.csv";
+        static private readonly string fpathStaff = $"{storage}{sep}staff.csv";
+        static private readonly string fpathAdmin = $"{storage}{sep}admin.csv";
+        static private readonly string fpathService = $"{storage}{sep}service.csv";
         // private filepath1, 2, 3 etc...
 
         public LocalStorage()
         {
             Directory.CreateDirectory(storage);
             this.spaces = new DbSet<Space>(fpathSpace);
-            this.customers = new DbSet<Customer>(fpathCustomer);
+            this.customer = new DbSet<Customer>(fpathCustomer);
+            this.staffs = new DbSet<Staff>(fpathStaff);
+            this.admins = new DbSet<Admin>(fpathAdmin);
+            this.service = new DbSet<Service>(fpathService);
         }
 
         public bool Create<T>(T entity)
@@ -70,7 +79,13 @@ namespace Gym_Booking_Manager
                 case "Space":
                     return this.spaces;
                 case "Customer":
-                    return this.customers;
+                    return this.customer;
+                case "Staff":
+                    return this.staffs;
+                case "Admin":
+                    return this.admins;
+                case "Service":
+                    return this.service;
                 // Add more cases for which DbSet<T> attributes exist within the class.
                 default:
                     throw new ArgumentException("Dataset for the argument type does not exist.");
