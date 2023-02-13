@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gym_Booking_Manager
 {
+    // Interface for data to be stored.
     internal interface IDatabase
     {
         bool Create<T>(T entity);

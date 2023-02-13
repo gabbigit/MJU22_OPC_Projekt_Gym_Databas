@@ -11,7 +11,8 @@ namespace Gym_Booking_Manager
 
         static void Main(string[] args)
         {
-/*
+
+            /*
             Customer ruben = new Customer("Ruben");
             Customer david = new Customer("David");
             Customer adam = new Customer("Adam");
@@ -28,8 +29,9 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine(c.name);
             }
-*/
-
+            GymDatabaseContext gd = new GymDatabaseContext();
+            */
+            
             Console.WriteLine("Enter your name: ");
             string name = Console.ReadLine();
             Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
@@ -50,7 +52,7 @@ namespace Gym_Booking_Manager
                 switch (option)
                 {
                     case 1:
-                        gym.Delete<Space>(hall);
+                        Console.WriteLine("Option 1");
                         break;
                     case 2:
                         Console.WriteLine("Option 2");
