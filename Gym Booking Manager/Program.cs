@@ -56,7 +56,7 @@ namespace Gym_Booking_Manager
             Guid id = Guid.NewGuid();
             Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
             int choice = int.Parse(Console.ReadLine());
-            
+        
 
             User user = User.ChooseUserType(name, phone, email, id, choice);
             int option = 0;
