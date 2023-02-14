@@ -19,9 +19,10 @@ namespace Gym_Booking_Manager
         //    this.name = name;
         //}
 
-        public Instructor(String name, Calendar calendar)
+        public Instructor(Category category, String name)
         {
             this.name = name;
+            this.category = category;
             this.calendar = new Calendar();
         }
         // Every class T to be used for DbSet<T> needs a constructor with this parameter signature. Make sure the object is properly initialized.
