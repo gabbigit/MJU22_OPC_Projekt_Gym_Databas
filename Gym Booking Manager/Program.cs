@@ -30,27 +30,27 @@ namespace Gym_Booking_Manager
                             Console.WriteLine(c.name);
                         }
             */
-            GymDatabaseContext gymBookingManagerDB = new GymDatabaseContext();
+            GymDatabaseContext DB = new GymDatabaseContext();
             //Customer ruben = new Customer("Ruben", "011-131313", "ruben@test.se", Guid.NewGuid());
             //Customer david = new Customer("David", "011-131313", "asd", Guid.NewGuid());
             //userDB.Create<Customer>(ruben);
             //userDB.Create<Customer>(david);
             //userDB.Create<Customer>(ruben);
             Equipment treadmill = new Equipment(Equipment.Category.Treadmill, "Treadmill");
-            gymBookingManagerDB.Create<Equipment>(treadmill);
-            foreach (Equipment e in gymBookingManagerDB.Read<Equipment>())
+            DB.Create<Equipment>(treadmill);
+            foreach (Equipment e in DB.Read<Equipment>())
             {
                 Console.WriteLine(e);
             }
-            foreach (Instructor i in gymBookingManagerDB.Read<Instructor>())
+            foreach (Instructor i in DB.Read<Instructor>())
             {
                 Console.WriteLine(i);
             }
-            foreach (Space s in gymBookingManagerDB.Read<Space>())
+            foreach (Space s in DB.Read<Space>())
             {
                 Console.WriteLine(s);
             }
-            foreach (Customer c in gymBookingManagerDB.Read<Customer>("email", "jsakda@se.se"))
+            foreach (Customer c in DB.Read<Customer>("email", "jsakda@se.se"))
             {
                 Console.WriteLine(c);
             }
@@ -75,16 +75,16 @@ namespace Gym_Booking_Manager
                 switch(UserType)
                 {
                     case "Customer":
-                        gymBookingManagerDB.Create<Customer>(user as Customer);
+                        DB.Create<Customer>(user as Customer);
                         break;
                     case "Staff":
-                        gymBookingManagerDB.Create<Staff>(user as Staff);
+                        DB.Create<Staff>(user as Staff);
                         break;
                     case "Admin":
-                        gymBookingManagerDB.Create<Admin>(user as Admin);
+                        DB.Create<Admin>(user as Admin);
                         break;
                     case "Service":
-                        gymBookingManagerDB.Create<Service>(user as Service);
+                        DB.Create<Service>(user as Service);
                         break;
                     default: break;
                 }
