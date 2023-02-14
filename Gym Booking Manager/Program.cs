@@ -64,6 +64,15 @@ namespace Gym_Booking_Manager
                 Console.WriteLine($"{user.GetType()}");
                 //User UserType = user.GetType();
                 //Console.WriteLine();
+                if (user.GetType() == typeof(Customer))
+                {
+                    userDB.Create<Customer>(user as Customer);
+                }
+                else if (user.GetType() == typeof(Staff))
+                {
+                    userDB.Create<Staff>(user as Staff);
+                }
+                else if (user.GetType() == typeof(Admin))
                 userDB.Create <Admin> (user as Admin);
             
             
