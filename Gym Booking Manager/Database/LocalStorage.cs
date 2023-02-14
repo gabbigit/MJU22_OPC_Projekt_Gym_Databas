@@ -30,6 +30,8 @@ namespace Gym_Booking_Manager
         public DbSet<Staff> staffs;
         public DbSet<Admin> admins;
         public DbSet<Service> service;
+        public DbSet<Instructor> instructors;
+        public DbSet<Equipment> equipments;
         // public DbSet<Equipment> equipment; ?
 
         static private readonly char sep = Path.DirectorySeparatorChar;
@@ -39,6 +41,8 @@ namespace Gym_Booking_Manager
         static private readonly string fpathStaff = $"{storage}{sep}staff.csv";
         static private readonly string fpathAdmin = $"{storage}{sep}admin.csv";
         static private readonly string fpathService = $"{storage}{sep}service.csv";
+        static private readonly string fpathInstructor = $"{storage}{sep}instructor.csv";
+        static private readonly string fpathEquipment = $"{storage}{sep}equipment.csv";
         // private filepath1, 2, 3 etc...
 
         public LocalStorage()
@@ -49,6 +53,8 @@ namespace Gym_Booking_Manager
             this.staffs = new DbSet<Staff>(fpathStaff);
             this.admins = new DbSet<Admin>(fpathAdmin);
             this.service = new DbSet<Service>(fpathService);
+            this.instructors = new DbSet<Instructor>(fpathInstructor);
+            this.equipments = new DbSet<Equipment>(fpathEquipment);
         }
 
         public bool Create<T>(T entity)
@@ -86,6 +92,10 @@ namespace Gym_Booking_Manager
                     return this.admins;
                 case "Service":
                     return this.service;
+                case "Instructor":
+                    return this.instructors;
+                case "Equipment":
+                    return this.equipments;
                 // Add more cases for which DbSet<T> attributes exist within the class.
                 default:
                     throw new ArgumentException("Dataset for the argument type does not exist.");

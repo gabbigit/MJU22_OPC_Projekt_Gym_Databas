@@ -14,10 +14,12 @@ namespace Gym_Booking_Manager
         private Category category;
         private String name;
         private readonly Calendar calendar;
+        private bool largeEquipment;
 
-        public Equipment(String name, Calendar calendar)
+        public Equipment(Category category, String name)
         {
             this.name = name;
+            this.category = category;
             this.calendar = new Calendar();
         }
         // Every class T to be used for DbSet<T> needs a constructor with this parameter signature. Make sure the object is properly initialized.

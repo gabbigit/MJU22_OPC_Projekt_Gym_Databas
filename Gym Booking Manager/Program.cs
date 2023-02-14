@@ -30,21 +30,32 @@ namespace Gym_Booking_Manager
                             Console.WriteLine(c.name);
                         }
             */
-            GymDatabaseContext userDB = new GymDatabaseContext();
+            GymDatabaseContext gymBookingManagerDB = new GymDatabaseContext();
             //Customer ruben = new Customer("Ruben", "011-131313", "ruben@test.se", Guid.NewGuid());
             //Customer david = new Customer("David", "011-131313", "asd", Guid.NewGuid());
             //userDB.Create<Customer>(ruben);
             //userDB.Create<Customer>(david);
             //userDB.Create<Customer>(ruben);
-            GymDatabaseContext spaceDB = new GymDatabaseContext();
-            foreach (Space s in spaceDB.Read<Space>())
+            Equipment treadmill = new Equipment(Equipment.Category.Treadmill, "Treadmill");
+            gymBookingManagerDB.Create<Equipment>(treadmill);
+            foreach (Equipment e in gymBookingManagerDB.Read<Equipment>())
+            {
+                Console.WriteLine(e);
+            }
+            foreach (Instructor i in gymBookingManagerDB.Read<Instructor>())
+            {
+                Console.WriteLine(i);
+            }
+            foreach (Space s in gymBookingManagerDB.Read<Space>())
             {
                 Console.WriteLine(s);
             }
-            foreach (Customer c in userDB.Read<Customer>("email", "jsakda@se.se"))
+            foreach (Customer c in gymBookingManagerDB.Read<Customer>("email", "jsakda@se.se"))
             {
                 Console.WriteLine(c);
             }
+            
+            /*
             DateTime d1 = new DateTime(year: 2023, month: 10, day: 10, hour: 12, minute: 00, second:00);
             DateTime d2 = new DateTime(year: 2023, month: 10, day: 11);
             TimeSlot timeSlot = new TimeSlot(d1);
@@ -53,6 +64,7 @@ namespace Gym_Booking_Manager
             Console.WriteLine(timeSlot);
             Console.WriteLine(timeSlot2);
             Console.WriteLine(timeSlot3);
+            */
             /* ---------------------------------------------------->START<------------------------------------------------------------------ */
 
             Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
@@ -63,16 +75,16 @@ namespace Gym_Booking_Manager
                 switch(UserType)
                 {
                     case "Customer":
-                        userDB.Create<Customer>(user as Customer);
+                        gymBookingManagerDB.Create<Customer>(user as Customer);
                         break;
                     case "Staff":
-                        userDB.Create<Staff>(user as Staff);
+                        gymBookingManagerDB.Create<Staff>(user as Staff);
                         break;
                     case "Admin":
-                        userDB.Create<Admin>(user as Admin);
+                        gymBookingManagerDB.Create<Admin>(user as Admin);
                         break;
                     case "Service":
-                        userDB.Create<Service>(user as Service);
+                        gymBookingManagerDB.Create<Service>(user as Service);
                         break;
                     default: break;
                 }
