@@ -33,7 +33,7 @@ namespace Gym_Booking_Manager
             */
             GymDatabaseContext DB = new GymDatabaseContext();
             Customer ruben = new Customer("Ruben", "011-131313", "ruben@test.se", Guid.NewGuid());
-            //Customer david = new Customer("David", "011-131313", "asd", Guid.NewGuid());
+            Customer david = new Customer("David", "011-131313", "asd", Guid.NewGuid());
             //userDB.Create<Customer>(ruben);
             //userDB.Create<Customer>(david);
             //userDB.Create<Customer>(ruben);
@@ -42,6 +42,7 @@ namespace Gym_Booking_Manager
             DateTime t3 = new DateTime(year: 2023, month: 10, day: 10, hour: 14, minute: 00, second: 00);
             DateTime t4 = new DateTime(year: 2023, month: 10, day: 10, hour: 15, minute: 00, second: 00);
             Space space = new Space(Space.Category.Hall, "Hall");
+            Space space2 = new Space(Space.Category.Studio, "Studio 2");
             Equipment treadmill = new Equipment(Equipment.Category.Gym, "Treadmill", 3, true);
             Equipment gym = new Equipment(Equipment.Category.Gym, "Gym", 1, true);
             DB.Create<Equipment>(gym);
@@ -54,9 +55,14 @@ namespace Gym_Booking_Manager
             DB.Create<Instructor>(instructor);
             instructor.MakeReservation(Reservation.Category.PT, ruben, t1, t2);
             //instructor.ViewTimeTable();
-            GroupActivity groupActivity = new GroupActivity("A1", 2, t1, t2, instructor, space, treadmill);
+            GroupActivity groupActivity = new GroupActivity("Activity 1", 2, t1, t2, instructor, space, treadmill);
             GroupSchedule groupSchedule = new GroupSchedule(groupActivity);
-            groupSchedule.ViewSchedule(ruben);
+            GroupActivity groupActivity2 = new GroupActivity("Activity 2", 3, t3, t4, instructor, space2, gym);
+            groupSchedule.AddActivity(groupActivity2);
+            groupActivity2.SignUp(ruben);
+            groupActivity.SignUp(ruben);
+            groupActivity.SignUp(david);
+            groupSchedule.ViewSchedule();
             /*
             foreach (Equipment e in DB.Read<Equipment>())
             {

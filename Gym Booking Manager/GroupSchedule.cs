@@ -14,6 +14,7 @@ namespace Gym_Booking_Manager
 {
     internal class GroupSchedule
     {
+        private GroupActivity activity;
         private List<GroupActivity> activities;
 
         public GroupSchedule(GroupActivity activity)
@@ -22,15 +23,14 @@ namespace Gym_Booking_Manager
             activities.Add(activity);
         }
 
-        public void ViewSchedule(User user)
+        public void ViewSchedule()
         {
-                Console.WriteLine("Schedule:");
-            Console.WriteLine("====================================");
+                Console.WriteLine($"Group Schedule(s):");
                 foreach (GroupActivity activity in activities)
                 {
-                    Console.WriteLine(activity);
+                    Console.WriteLine("===========================================");
+                Console.WriteLine(activity + "\n");
                 }
-            Console.WriteLine("====================================");
         }
         public void AddActivity(GroupActivity activity)
         {

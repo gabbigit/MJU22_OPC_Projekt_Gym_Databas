@@ -15,7 +15,7 @@ namespace Gym_Booking_Manager
         private TimeSlot timeSlot;
         private Instructor instructor;
         private Space space;
-        private Equipment equipment;
+        public Equipment equipment { get; set; }
 
         public Instructor Instructor
         {
@@ -25,6 +25,10 @@ namespace Gym_Booking_Manager
         public List<Customer> Participants
         { 
             get => participants;
+        }
+        public TimeSlot TimeSlot
+        {
+            get => timeSlot;
         }
 
         public GroupActivity(string activityID, int participantLimit, DateTime start, DateTime end, Instructor instructor, Space space, Equipment equipment)
@@ -57,18 +61,15 @@ namespace Gym_Booking_Manager
             string partisipants = "";
             foreach (Customer customer in participants)
             {
-                partisipants += customer.name;
+                partisipants += customer.name + "|";
             }
             return partisipants;
-        }
-        public string equipmentToString()
-        {
-            return equipment.Name;
         }
         //For future use 
         public override string ToString()
         {
-            return $"activity: {activityID} with instructor: {Instructor.Name}\n{timeSlot}\nspace: {space}\nparticipants: {PartisipantsToString()}\n equipment: {equipmentToString()}";
+            return $"Activity: {activityID}\ninstructor: {Instructor.Name}\n{timeSlot}\nSpace: {space.Name}" +
+                $"\nParticipants: {PartisipantsToString()}\nEquipment: {equipment.Name}";
         }
     }
    

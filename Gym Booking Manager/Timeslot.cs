@@ -24,7 +24,7 @@ namespace Gym_Booking_Manager
         }
         override public string ToString()
         {
-            return "Time Slot: " + start.ToString() + " - " + end.ToString();
+            return $"Time slot: {start.ToString("yy/MM/dd")} ({start.ToString("HH:mm")} - {end.ToString("HH:mm")})";
         }
         public int CompareTo(TimeSlot? other)
         {

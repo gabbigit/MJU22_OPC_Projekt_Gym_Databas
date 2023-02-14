@@ -56,6 +56,10 @@ namespace Gym_Booking_Manager
             // When category is the same, sort on name.
             return this.name.CompareTo(other.name);
         }
+        public string Name
+        {
+            get => name;
+        }
 
         public override string ToString()
         {
