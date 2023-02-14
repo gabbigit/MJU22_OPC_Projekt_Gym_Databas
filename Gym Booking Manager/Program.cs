@@ -1,5 +1,6 @@
 ﻿using Gym_Booking_Manager;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 #if DEBUG
 [assembly: InternalsVisibleTo("Tests")]
@@ -52,6 +53,10 @@ namespace Gym_Booking_Manager
             Console.WriteLine(timeSlot);
             Console.WriteLine(timeSlot2);
             Console.WriteLine(timeSlot3);
+            foreach (Staff s in userDB.Read<Staff>())
+            {
+                Console.WriteLine(s);
+            }
 
             Console.WriteLine("Enter your name: ");
             string name = Console.ReadLine();
@@ -62,11 +67,28 @@ namespace Gym_Booking_Manager
             Guid id = Guid.NewGuid();
             Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
             int choice = int.Parse(Console.ReadLine());
-            Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
             
 
+
             User user = User.ChooseUserType(name, phone, email, id, choice);
-            userDB.Create<Customer>(user as Customer);
+            if(user.GetPerm() == 0)
+            {
+               userDB.Create<Customer>(user as Customer);
+            }
+            else if(user.GetPerm() == 1)
+            {
+                userDB.Create<Staff>(user as Staff);
+            }
+            else if (user.GetPerm() == 2)
+            {
+                userDB.Create<Admin>(user as Admin);
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice");
+            }
+            
+
             int option = 0;
             do
             {
@@ -96,6 +118,7 @@ namespace Gym_Booking_Manager
                 }
                 Console.WriteLine();
             } while (option != 4);
+            
         }
         // Static methods for the program
     }
