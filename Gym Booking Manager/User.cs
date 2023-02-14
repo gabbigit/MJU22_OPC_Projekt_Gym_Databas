@@ -53,6 +53,12 @@ namespace Gym_Booking_Manager
             throw new NotImplementedException();
         }
 
+        public static void GetUserById(string id)
+        {
+            throw new NotImplementedException();
+
+        }
+
         public static User ChooseUserType(string name, string phone, string email, Guid Id, int choice)
         {
             switch (choice)

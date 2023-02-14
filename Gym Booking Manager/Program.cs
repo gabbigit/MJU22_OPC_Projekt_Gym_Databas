@@ -1,4 +1,5 @@
 ﻿using Gym_Booking_Manager;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
@@ -115,9 +116,43 @@ namespace Gym_Booking_Manager
             }
             else if (answer == 2)
             {
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
+                List<Customer> umm = DB.Read<Customer>("Id", id);
+                User user = umm[0];
+                Console.WriteLine(umm.ToString());
+                /*
+                Console.WriteLine("Enter ID:");
+                string id = Console.ReadLine();
+
+                if (DB.Read<Customer>("Id", id) != null) { List<Customer> userL = DB.Read<Customer>("Id", id); User user = userL[0]; }
+
+                User user = null;
+                List<Type> userTypes = new List<Type> { typeof(Customer), typeof(Staff), typeof(Admin), typeof(Service),  };
+                foreach (Type userType in userTypes)
+                {
+                    MethodInfo readMethod = typeof(DB).GetMethod("Read").MakeGenericMethod(userType);
+                    List<User> userList = (List<User>)readMethod.Invoke(DB, new object[] { "Id", id });
+                    if (userList.Count > 0)
+                    {
+                        user = userList[0];
+                        break;
+                    }
+                }
+                Console.WriteLine(user.ToString);
+
+                User user = DB.Read<User>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a");
+                List<User> ts = DB.Read<User>("Id", id);
+                User user = ts[0];
+                foreach (User u in ts)
+                {
+                    Console.WriteLine(u.ToString());
+                }
+                List<Customer> umm = DB.Read<Customer>("Id", id);
+                User user = umm[0];
+                Console.WriteLine(umm.ToString());
+                */
             }
 
 
