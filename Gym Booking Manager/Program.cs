@@ -30,27 +30,48 @@ namespace Gym_Booking_Manager
                             Console.WriteLine(c.name);
                         }
             */
-            GymDatabaseContext gymBookingManagerDB = new GymDatabaseContext();
-            //Customer ruben = new Customer("Ruben", "011-131313", "ruben@test.se", Guid.NewGuid());
+            GymDatabaseContext DB = new GymDatabaseContext();
+            Customer ruben = new Customer("Ruben", "011-131313", "ruben@test.se", Guid.NewGuid());
             //Customer david = new Customer("David", "011-131313", "asd", Guid.NewGuid());
             //userDB.Create<Customer>(ruben);
             //userDB.Create<Customer>(david);
             //userDB.Create<Customer>(ruben);
-            Equipment treadmill = new Equipment(Equipment.Category.Treadmill, "Treadmill");
-            gymBookingManagerDB.Create<Equipment>(treadmill);
-            foreach (Equipment e in gymBookingManagerDB.Read<Equipment>())
+            DateTime t1 = new DateTime(year: 2023, month: 10, day: 10, hour: 12, minute: 00, second: 00);
+            DateTime t2 = new DateTime(year: 2023, month: 10, day: 10, hour: 13, minute: 00, second: 00);
+            DateTime t3 = new DateTime(year: 2023, month: 10, day: 10, hour: 14, minute: 00, second: 00);
+            DateTime t4 = new DateTime(year: 2023, month: 10, day: 10, hour: 15, minute: 00, second: 00);
+            Space space = new Space(Space.Category.Hall, "Hall");
+            Equipment treadmill = new Equipment(Equipment.Category.Gym, "Treadmill", 3, true);
+            Equipment gym = new Equipment(Equipment.Category.Gym, "Gym", 1, true);
+            DB.Create<Equipment>(gym);
+            gym.MakeReservation(Reservation.Category.Gym, ruben, t1, t2);
+            gym.ViewTimeTable();
+            gym.MakeReservation(Reservation.Category.Gym, ruben, t3, t4);
+            DB.Create<Equipment>(treadmill);
+            treadmill.MakeReservation(0,ruben, t1, t2);
+            treadmill.ViewTimeTable();
+            Instructor instructor = new Instructor(Instructor.Category.PT, "Tom");
+            DB.Create<Instructor>(instructor);
+            instructor.MakeReservation(Reservation.Category.PT, ruben, t1, t2);
+            instructor.ViewTimeTable();
+            GroupActivity groupActivity = new GroupActivity("A1", 2, t1, t2, instructor, space, treadmill);
+            groupActivity.SignUp(ruben);
+            GroupSchedule groupSchedule = new GroupSchedule(groupActivity);
+            //groupSchedule.AddActivity(groupActivity);
+            //groupSchedule.ViewSchedule(ruben);
+            foreach (Equipment e in DB.Read<Equipment>())
             {
                 Console.WriteLine(e);
             }
-            foreach (Instructor i in gymBookingManagerDB.Read<Instructor>())
+            foreach (Instructor i in DB.Read<Instructor>())
             {
                 Console.WriteLine(i);
             }
-            foreach (Space s in gymBookingManagerDB.Read<Space>())
+            foreach (Space s in DB.Read<Space>())
             {
                 Console.WriteLine(s);
             }
-            foreach (Customer c in gymBookingManagerDB.Read<Customer>("email", "jsakda@se.se"))
+            foreach (Customer c in DB.Read<Customer>())
             {
                 Console.WriteLine(c);
             }
@@ -75,16 +96,16 @@ namespace Gym_Booking_Manager
                 switch(UserType)
                 {
                     case "Customer":
-                        gymBookingManagerDB.Create<Customer>(user as Customer);
+                        DB.Create<Customer>(user as Customer);
                         break;
                     case "Staff":
-                        gymBookingManagerDB.Create<Staff>(user as Staff);
+                        DB.Create<Staff>(user as Staff);
                         break;
                     case "Admin":
-                        gymBookingManagerDB.Create<Admin>(user as Admin);
+                        DB.Create<Admin>(user as Admin);
                         break;
                     case "Service":
-                        gymBookingManagerDB.Create<Service>(user as Service);
+                        DB.Create<Service>(user as Service);
                         break;
                     default: break;
                 }

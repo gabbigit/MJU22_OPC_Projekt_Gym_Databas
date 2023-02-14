@@ -86,9 +86,9 @@ namespace Gym_Booking_Manager
 
         }
 
-        public void MakeReservation(IReservingEntity owner)
+        public void MakeReservation(Reservation.Category category, IReservingEntity owner, DateTime start, DateTime end)
         {
-          
+            throw new NotImplementedException();
         }
 
         public void CancelReservation()

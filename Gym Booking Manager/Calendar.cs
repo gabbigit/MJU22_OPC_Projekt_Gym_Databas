@@ -19,12 +19,32 @@ namespace Gym_Booking_Manager
     internal class Calendar
     {
         private readonly List<Reservation> reservations;
+        
 
         public Calendar()
         {
             this.reservations = new List<Reservation>();
         }
 
+        public bool isAvailable(DateTime start, DateTime end)
+        {
+            // Check if there is a reservation that overlaps with the given start and end times.
+            // If there is, return false.
+            // If there isn't, return true.
+            // This is a placeholder method for now. It will be replaced with a more efficient method later.
+            foreach (Reservation reservation in this.reservations)
+            {
+                if (reservation.start < end && reservation.end > start)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public void AddReservation(Reservation reservation)
+        {
+            this.reservations.Add(reservation);
+        }
         // Leaving this method for now. Idea being it may be useful to get entries within a "start" and "end" time/date range.
         // Need parameters if so.
         // Or maybe we'll come up with a better solution elsewhere.

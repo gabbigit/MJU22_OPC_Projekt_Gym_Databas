@@ -8,6 +8,6 @@ namespace Gym_Booking_Manager
 {
     internal interface IReservingEntity
     {
-        void owner();
+        // void MakeReservation(Category category, IReservingEntity owner, DateTime start, DateTime end); ????
     }
 }

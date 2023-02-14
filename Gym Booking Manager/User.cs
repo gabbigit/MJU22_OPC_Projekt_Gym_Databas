@@ -180,7 +180,7 @@ namespace Gym_Booking_Manager
         }
     }
 
-    internal class Customer : User, ICSVable, IComparable<Customer>
+    internal class Customer : User, ICSVable, IComparable<Customer>, IReservingEntity
     {
         public Customer(string name, string phone, string email, Guid Id) : base(name)
         {
@@ -216,9 +216,13 @@ namespace Gym_Booking_Manager
         {
             return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
         }
+        public void PrintAllInfo()
+        {
+            Console.WriteLine($"Name: {name}, Phone: {phone}, Email: {email}, Id: {Id}");
+        }
         public override string ToString()
         {
-            return $"{name}, {phone}, {email}, {Id}";
+            return $"{name}, {Id}";
         }
     }
 

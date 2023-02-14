@@ -14,12 +14,15 @@ namespace Gym_Booking_Manager
         private Category category;
         private String name;
         private readonly Calendar calendar;
+        private int quantity;
         private bool largeEquipment;
 
-        public Equipment(Category category, String name)
+        public Equipment(Category category, String name, int quantity, bool largeEquipment)
         {
-            this.name = name;
             this.category = category;
+            this.name = name;
+            this.quantity = quantity;
+            this.largeEquipment = largeEquipment;
             this.calendar = new Calendar();
         }
         // Every class T to be used for DbSet<T> needs a constructor with this parameter signature. Make sure the object is properly initialized.
@@ -44,7 +47,7 @@ namespace Gym_Booking_Manager
         }
         public override string ToString()
         {
-            return this.CSVify(); // TODO: Don't use CSVify. Make it more readable.
+            return this.CSVify();
         }
 
         // Every class C to be used for DbSet<C> should have the ICSVable interface and the following implementation.
@@ -70,14 +73,36 @@ namespace Gym_Booking_Manager
             // Show?
             foreach (Reservation reservation in tableSlice)
             {
-                // Do something?
+                Console.WriteLine(reservation);
             }
 
         }
 
-        public void MakeReservation(IReservingEntity owner)
+        public void MakeReservation(Reservation.Category category, IReservingEntity owner, DateTime start, DateTime end)
         {
-
+            // Check if the reservation is valid
+            if (start > end)
+            {
+                throw new ArgumentException("Start time must be before end time.");
+            }
+            // Check if the reservation is available
+            if (this.calendar.isAvailable(start, end))
+            {
+                // Make the reservation
+                if (this.quantity > 0)
+                {
+                    this.calendar.AddReservation(new Reservation(category, this.quantity, owner, start, end));
+                    this.quantity--;
+                }
+                else
+                {
+                    Console.WriteLine("Not available! STUPID!");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("The reservation is not available.");
+            }
         }
 
         public void CancelReservation()

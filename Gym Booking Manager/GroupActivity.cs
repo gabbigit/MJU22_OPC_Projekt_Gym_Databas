@@ -22,7 +22,7 @@ namespace Gym_Booking_Manager
             get => participants;
         }
 
-        public GroupActivity(string activityID, int participantLimit, TimeSlot timeSlot, Instructor instructor, Space space, Equipment equipment)
+        public GroupActivity(string activityID, int participantLimit, DateTime start, DateTime end, Instructor instructor, Space space, Equipment equipment)
         {
             this.activityID = activityID;
             this.participantLimit = participantLimit;
@@ -44,9 +44,9 @@ namespace Gym_Booking_Manager
             }
         }
         //For future use 
-        public void Print()
+        public override string ToString()
         {
-            Console.WriteLine($"activity: {activityID} with instructor: {instructor.ToString()}, time: {timeSlot}, space: {space}");
+            return $"activity: {activityID} with instructor: {instructor}, time: {timeSlot}, space: {space}, participants: {participants}, equipment: {equipment}";
         }
     }
    

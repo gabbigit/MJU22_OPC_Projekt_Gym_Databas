@@ -11,13 +11,7 @@ namespace Gym_Booking_Manager
         private Category category;
         private String name;
         private readonly Calendar calendar;
-
-        //private string name { get; set; }
-        //public Instructor(string name)
-        //{
-        //    this.quantity = 1;
-        //    this.name = name;
-        //}
+        private int quantity = 1;
 
         public Instructor(Category category, String name)
         {
@@ -67,13 +61,27 @@ namespace Gym_Booking_Manager
             // Show?
             foreach (Reservation reservation in tableSlice)
             {
-                // Do something?
+                Console.WriteLine(reservation);
             }
 
         }
-        public void MakeReservation(IReservingEntity owner)
+        public void MakeReservation(Reservation.Category category, IReservingEntity owner, DateTime start, DateTime end)
         {
-
+            // Check if the reservation is valid
+            if (start > end)
+            {
+                throw new ArgumentException("Start time must be before end time.");
+            }
+            // Check if the reservation is available
+            if (this.calendar.isAvailable(start, end))
+            {
+                // Make the reservation
+                this.calendar.AddReservation(new Reservation(category, this.quantity, owner, start, end));
+            }
+            else
+            {
+                throw new ArgumentException("The reservation is not available.");
+            }
         }
 
         public void CancelReservation()

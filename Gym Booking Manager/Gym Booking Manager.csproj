@@ -8,4 +8,22 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="bin\Debug\net6.0\Gym Booking Manager.deps.json" />
+    <Content Include="bin\Debug\net6.0\Gym Booking Manager.runtimeconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\Gym Booking Manager.dll" />
+    <None Include="bin\Debug\net6.0\Gym Booking Manager.exe" />
+    <None Include="bin\Debug\net6.0\Gym Booking Manager.pdb" />
+    <None Include="bin\Debug\net6.0\GymDB\storage\admin.csv" />
+    <None Include="bin\Debug\net6.0\GymDB\storage\customer.csv" />
+    <None Include="bin\Debug\net6.0\GymDB\storage\equipment.csv" />
+    <None Include="bin\Debug\net6.0\GymDB\storage\instructor.csv" />
+    <None Include="bin\Debug\net6.0\GymDB\storage\service.csv" />
+    <None Include="bin\Debug\net6.0\GymDB\storage\space.csv" />
+    <None Include="bin\Debug\net6.0\GymDB\storage\staff.csv" />
+  </ItemGroup>
+
 </Project>

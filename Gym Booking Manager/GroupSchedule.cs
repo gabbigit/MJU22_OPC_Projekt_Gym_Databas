@@ -16,31 +16,23 @@ namespace Gym_Booking_Manager
     {
         private List<GroupActivity> activities;
 
+        public GroupSchedule(GroupActivity activity)
+        {
+            activities = new List<GroupActivity>();
+            activities.Add(activity);
+        }
+
         public void ViewSchedule(User user)
         {
-            if (user.GetPerm() == 0)
-            {
-                Console.WriteLine("You are not allowed to view the schedule");
-            }
-            else
-            {
                 Console.WriteLine("Schedule:");
                 foreach (GroupActivity activity in activities)
                 {
                     Console.WriteLine(activity);
                 }
-            }
         }
-        public void AddActivity(User user, GroupActivity activity)
+        public void AddActivity(GroupActivity activity)
         {
-            if (user.GetPerm() == 0)
-            {
-                Console.WriteLine("You are not allowed to add activities");
-            }
-            else
-            {
                 activities.Add(activity);
-            }
         }
         public void RemoveActivity(User user, GroupActivity activityID)
         {
