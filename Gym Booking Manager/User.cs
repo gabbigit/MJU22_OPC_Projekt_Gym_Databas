@@ -32,6 +32,27 @@ namespace Gym_Booking_Manager
             throw new NotImplementedException();
         }
 
+        public static User Create()
+        {
+            Console.WriteLine("Enter your name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter your phone number: ");
+            string phone = Console.ReadLine();
+            Console.WriteLine("Enter your email: ");
+            string email = Console.ReadLine();
+            Guid id = Guid.NewGuid();
+            Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
+            int choice = int.Parse(Console.ReadLine());
+            //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
+
+
+            return ChooseUserType(name, phone, email, id, choice);
+        }
+        public static void Remove()
+        {
+            throw new NotImplementedException();
+        }
+
         public static User ChooseUserType(string name, string phone, string email, Guid Id, int choice)
         {
             switch (choice)
@@ -131,6 +152,48 @@ namespace Gym_Booking_Manager
         public new string CSVify()
         {
             return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
+        }
+    }
+
+    internal class Customer : User, ICSVable, IComparable<Customer>
+    {
+        public Customer(string name, string phone, string email, Guid Id) : base(name)
+        {
+            this.perm = 0;
+            this.phone = phone;
+            this.email = email;
+            this.Id = Id;
+        }
+        public Customer(string name, string phone, string email) : base(name)
+        {
+            this.name = name;
+            this.phone = phone;
+            this.email = email;
+        }
+        public Customer(Dictionary<string, string> dict) : base(dict[nameof(name)])
+        {
+            this.name = dict[nameof(name)];
+            this.phone = dict[nameof(phone)];
+            this.email = dict[nameof(email)];
+            this.Id = Guid.Parse(dict[nameof(Id)]);
+        }
+        public int CompareTo(Customer? other)
+        {
+            // If other is not a valid object reference, this instance is greater.
+            if (other == null) return 1;
+            // Sort primarily on category.
+            if (this.Id != other.Id) return this.Id.CompareTo(other.Id);
+            // When category is the same, sort on name.
+            return this.name.CompareTo(other.name);
+        }
+
+        public string CSVify()
+        {
+            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
+        }
+        public override string ToString()
+        {
+            return $"{name}, {phone}, {email}, {Id}";
         }
     }
 
