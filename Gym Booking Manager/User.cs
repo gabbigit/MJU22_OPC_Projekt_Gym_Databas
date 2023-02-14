@@ -41,7 +41,7 @@ namespace Gym_Booking_Manager
             Console.WriteLine("Enter your email: ");
             string email = Console.ReadLine();
             Guid id = Guid.NewGuid();
-            Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
+            Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin, 3 for Service): ");
             int choice = int.Parse(Console.ReadLine());
             //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
 
@@ -63,6 +63,8 @@ namespace Gym_Booking_Manager
                     return new Staff(name, phone, email, Id);
                 case 2:
                     return new Admin(name, phone, email, Id);
+                case 3:
+                    return new Service(name, phone, email, Id);
                 default:
                     throw new ArgumentException("Invalid choice");
             }
@@ -143,15 +145,38 @@ namespace Gym_Booking_Manager
         }
     }
 
-    internal class Service : User, ICSVable
+    internal class Service : User, ICSVable, IComparable<Service>
     {
-        public Service(string name) : base(name)
+        public Service(string name, string phone, string email, Guid Id) : base(name)
         {
-            this.perm = 3;
+            this.perm = 2;
+            this.phone = phone;
+            this.email = email;
+            this.Id = Id;
         }
-        public new string CSVify()
+        public Service(Dictionary<string, string> dict) : base(dict[nameof(name)])
+        {
+            this.name = dict[nameof(name)];
+            this.phone = dict[nameof(phone)];
+            this.email = dict[nameof(email)];
+            this.Id = Guid.Parse(dict[nameof(Id)]);
+        }
+        public string CSVify()
         {
             return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
+        }
+        public override string ToString()
+        {
+            return $"{name}, {phone}, {email}, {Id}";
+        }
+        public int CompareTo(Service? other)
+        {
+            // If other is not a valid object reference, this instance is greater.
+            if (other == null) return 1;
+            // Sort primarily on category.
+            if (this.Id != other.Id) return this.Id.CompareTo(other.Id);
+            // When category is the same, sort on name.
+            return this.name.CompareTo(other.name);
         }
     }
 
