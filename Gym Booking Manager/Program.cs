@@ -82,9 +82,16 @@ namespace Gym_Booking_Manager
             }
             else if (answer == 2)
             {
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
+
+                //User user = userDB.Read<User>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a");
+                List<User> ts = userDB.Read<User>();
+                foreach (User u in ts)
+                {
+                    Console.WriteLine(u.ToString());
+                }
             }
 
 
