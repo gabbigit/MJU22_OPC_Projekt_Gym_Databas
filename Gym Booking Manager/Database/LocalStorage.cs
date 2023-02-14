@@ -32,7 +32,7 @@ namespace Gym_Booking_Manager
         public DbSet<Service> service;
         public DbSet<Instructor> instructors;
         public DbSet<Equipment> equipments;
-        // public DbSet<Equipment> equipment; ?
+        // public DbSet<Equipment> gearscore; ?
 
         static private readonly char sep = Path.DirectorySeparatorChar;
         static private readonly string storage = $"GymDB{sep}storage";
