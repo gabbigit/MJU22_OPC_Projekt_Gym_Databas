@@ -17,6 +17,11 @@ namespace Gym_Booking_Manager
         private Space space;
         private Equipment equipment;
 
+        public Instructor Instructor
+        {
+            get => instructor;
+        }
+
         public List<Customer> Participants
         { 
             get => participants;
@@ -26,7 +31,7 @@ namespace Gym_Booking_Manager
         {
             this.activityID = activityID;
             this.participantLimit = participantLimit;
-            this.timeSlot = timeSlot;
+            this.timeSlot = new TimeSlot(start, end);
             this.instructor = instructor;
             this.space = space;
             this.equipment = equipment;
@@ -43,10 +48,27 @@ namespace Gym_Booking_Manager
                 Console.WriteLine("Activity is full");
             }
         }
+        public void SignOut(Customer customer)
+        {
+            participants.Remove(customer);
+        }
+        public string PartisipantsToString()
+        {
+            string partisipants = "";
+            foreach (Customer customer in participants)
+            {
+                partisipants += customer.name;
+            }
+            return partisipants;
+        }
+        public string equipmentToString()
+        {
+            return equipment.Name;
+        }
         //For future use 
         public override string ToString()
         {
-            return $"activity: {activityID} with instructor: {instructor}, time: {timeSlot}, space: {space}, participants: {participants}, equipment: {equipment}";
+            return $"activity: {activityID} with instructor: {Instructor.Name}\n{timeSlot}\nspace: {space}\nparticipants: {PartisipantsToString()}\n equipment: {equipmentToString()}";
         }
     }
    

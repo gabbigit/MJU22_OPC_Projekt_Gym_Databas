@@ -25,10 +25,12 @@ namespace Gym_Booking_Manager
         public void ViewSchedule(User user)
         {
                 Console.WriteLine("Schedule:");
+            Console.WriteLine("====================================");
                 foreach (GroupActivity activity in activities)
                 {
                     Console.WriteLine(activity);
                 }
+            Console.WriteLine("====================================");
         }
         public void AddActivity(GroupActivity activity)
         {
@@ -36,14 +38,7 @@ namespace Gym_Booking_Manager
         }
         public void RemoveActivity(User user, GroupActivity activityID)
         {
-            if (user.GetPerm() == 0)
-            {
-                Console.WriteLine("You are not allowed to remove activities");
-            }
-            else
-            {
                 activities.Remove(activityID);
-            }
         }
         public void UpdateActivity(User user, GroupActivity activityID, GroupActivity activity)
         {

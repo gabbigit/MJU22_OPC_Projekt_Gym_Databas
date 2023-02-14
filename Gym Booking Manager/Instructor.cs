@@ -13,6 +13,8 @@ namespace Gym_Booking_Manager
         private readonly Calendar calendar;
         private int quantity = 1;
 
+        public string Name { get => name; }
+
         public Instructor(Category category, String name)
         {
             this.name = name;

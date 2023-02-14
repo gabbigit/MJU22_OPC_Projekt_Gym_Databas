@@ -17,6 +17,11 @@ namespace Gym_Booking_Manager
             this.start = start;
             this.end = start.AddHours(1);
         }
+        public TimeSlot(DateTime start, DateTime end)
+        {
+            this.start = start;
+            this.end = end;
+        }
         override public string ToString()
         {
             return "Time Slot: " + start.ToString() + " - " + end.ToString();

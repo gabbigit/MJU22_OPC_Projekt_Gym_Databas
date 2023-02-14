@@ -46,20 +46,18 @@ namespace Gym_Booking_Manager
             Equipment gym = new Equipment(Equipment.Category.Gym, "Gym", 1, true);
             DB.Create<Equipment>(gym);
             gym.MakeReservation(Reservation.Category.Gym, ruben, t1, t2);
-            gym.ViewTimeTable();
-            gym.MakeReservation(Reservation.Category.Gym, ruben, t3, t4);
+            //gym.ViewTimeTable();
             DB.Create<Equipment>(treadmill);
             treadmill.MakeReservation(0,ruben, t1, t2);
-            treadmill.ViewTimeTable();
+            //treadmill.ViewTimeTable();
             Instructor instructor = new Instructor(Instructor.Category.PT, "Tom");
             DB.Create<Instructor>(instructor);
             instructor.MakeReservation(Reservation.Category.PT, ruben, t1, t2);
-            instructor.ViewTimeTable();
+            //instructor.ViewTimeTable();
             GroupActivity groupActivity = new GroupActivity("A1", 2, t1, t2, instructor, space, treadmill);
-            groupActivity.SignUp(ruben);
             GroupSchedule groupSchedule = new GroupSchedule(groupActivity);
-            //groupSchedule.AddActivity(groupActivity);
-            //groupSchedule.ViewSchedule(ruben);
+            groupSchedule.ViewSchedule(ruben);
+            /*
             foreach (Equipment e in DB.Read<Equipment>())
             {
                 Console.WriteLine(e);
@@ -76,6 +74,7 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine(c);
             }
+            */
             
             /*
             DateTime d1 = new DateTime(year: 2023, month: 10, day: 10, hour: 12, minute: 00, second:00);
@@ -121,7 +120,7 @@ namespace Gym_Booking_Manager
                 string id = Console.ReadLine();
                 List<Customer> umm = DB.Read<Customer>("Id", id);
                 User user = umm[0];
-                Console.WriteLine(umm.ToString());
+                Console.WriteLine(user);
                 /*
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();

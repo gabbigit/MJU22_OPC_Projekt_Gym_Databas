@@ -17,6 +17,8 @@ namespace Gym_Booking_Manager
         private int quantity;
         private bool largeEquipment;
 
+        public string Name { get => name; }
+
         public Equipment(Category category, String name, int quantity, bool largeEquipment)
         {
             this.category = category;
