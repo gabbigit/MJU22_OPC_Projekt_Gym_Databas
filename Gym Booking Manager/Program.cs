@@ -1,5 +1,6 @@
 ﻿using Gym_Booking_Manager;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 #if DEBUG
 [assembly: InternalsVisibleTo("Tests")]
@@ -120,6 +121,7 @@ namespace Gym_Booking_Manager
                 }
                 Console.WriteLine();
             } while (option != 4);
+            
         }
         // Static methods for the program
     }
