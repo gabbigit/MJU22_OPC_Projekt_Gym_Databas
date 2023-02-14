@@ -36,8 +36,8 @@ namespace Gym_Booking_Manager
             //userDB.Create<Customer>(ruben);
             //userDB.Create<Customer>(david);
             //userDB.Create<Customer>(ruben);
-            Equipment treadmill = new Equipment(Equipment.Category.Treadmill, "Treadmill");
-            DB.Create<Equipment>(treadmill);
+            //Equipment treadmill = new Equipment(Equipment.Category.Treadmill, "Treadmill");
+            //DB.Create<Equipment>(treadmill);
             foreach (Equipment e in DB.Read<Equipment>())
             {
                 Console.WriteLine(e);
@@ -98,12 +98,16 @@ namespace Gym_Booking_Manager
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
 
+                if (DB.Read<Customer>("Id", id) != null) { List<Customer> userL = DB.Read<Customer>("Id", id); User user = userL[0]; }
                 //User user = userDB.Read<User>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a");
-                List<User> ts = userDB.Read<User>();
-                foreach (User u in ts)
+                //List<User> ts = DB.Read<User>("Id", id);
+                //User user = ts[0];
+                /*foreach (User u in ts)
                 {
                     Console.WriteLine(u.ToString());
                 }
+                *///User umm = DB.Read<Customer>("Id", id);
+                //Console.WriteLine(umm.ToString());
             }
 
 
