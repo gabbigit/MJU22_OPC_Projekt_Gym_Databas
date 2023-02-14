@@ -57,17 +57,34 @@ namespace Gym_Booking_Manager
             Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
             int answer = Convert.ToInt32(Console.ReadLine());
             if (answer == 1) {
-
-
                 User user = User.Create();
-                Console.WriteLine($"{user.GetType()}");
-                UserType = user.GetType();
-                //Console.WriteLine();
-                userDB.Create <Customer> (user as Customer);
-            
-            
+                string UserType = user.GetType().Name;
+                switch(UserType)
+                {
+                    case "Customer":
+                        userDB.Create<Customer>(user as Customer);
+                        break;
+                    case "Staff":
+                        userDB.Create<Staff>(user as Staff);
+                        break;
+                    case "Admin":
+                        userDB.Create<Admin>(user as Admin);
+                        break;
+                    case "Service":
+                        userDB.Create<Service>(user as Service);
+                        break;
+                    default: break;
+                }
+                Console.WriteLine($"This is your ID(save it--Or dont. see if i care.):{user.GetType().GUID}");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
-            else if (answer == 2) { throw new NotImplementedException(); }
+            else if (answer == 2)
+            {
+                throw new NotImplementedException();
+                Console.WriteLine("Enter ID:");
+                string id = Console.ReadLine();
+            }
 
 
             //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
