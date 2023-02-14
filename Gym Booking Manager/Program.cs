@@ -95,7 +95,12 @@ namespace Gym_Booking_Manager
             }
             else if (answer == 2)
             {
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
+                Console.WriteLine("Enter ID:");
+                string id = Console.ReadLine();
+                List<Customer> umm = DB.Read<Customer>("Id", id);
+                User user = umm[0];
+                Console.WriteLine(umm.ToString());
                 /*
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
@@ -103,7 +108,7 @@ namespace Gym_Booking_Manager
                 if (DB.Read<Customer>("Id", id) != null) { List<Customer> userL = DB.Read<Customer>("Id", id); User user = userL[0]; }
 
                 User user = null;
-                List<Type> userTypes = new List<Type> { typeof(Customer), typeof(Staff), typeof(Admin), typeof(Service) /* add more types as needed  };
+                List<Type> userTypes = new List<Type> { typeof(Customer), typeof(Staff), typeof(Admin), typeof(Service),  };
                 foreach (Type userType in userTypes)
                 {
                     MethodInfo readMethod = typeof(DB).GetMethod("Read").MakeGenericMethod(userType);
@@ -116,14 +121,15 @@ namespace Gym_Booking_Manager
                 }
                 Console.WriteLine(user.ToString);
 
-                User user = userDB.Read<User>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a");
+                User user = DB.Read<User>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a");
                 List<User> ts = DB.Read<User>("Id", id);
                 User user = ts[0];
                 foreach (User u in ts)
                 {
                     Console.WriteLine(u.ToString());
                 }
-                User umm = DB.Read<Customer>("Id", id);
+                List<Customer> umm = DB.Read<Customer>("Id", id);
+                User user = umm[0];
                 Console.WriteLine(umm.ToString());
                 */
             }
