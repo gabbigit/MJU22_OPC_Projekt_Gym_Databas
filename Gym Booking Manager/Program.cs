@@ -61,9 +61,9 @@ namespace Gym_Booking_Manager
 
                 User user = User.Create();
                 Console.WriteLine($"{user.GetType()}");
-                //User UserType = user.GetType();
+                UserType = user.GetType();
                 //Console.WriteLine();
-                userDB.Create <Admin> (user as Admin);
+                userDB.Create <Customer> (user as Customer);
             
             
             }
