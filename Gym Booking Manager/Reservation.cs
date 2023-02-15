@@ -10,23 +10,20 @@ namespace Gym_Booking_Manager
     internal class Reservation
     {
         private readonly IReservingEntity owner;
-        public DateTime start { get; set; }
-        public DateTime end { get; set; }
+        public TimeSlot timeSlot { get; set; }
         private Category category;
         private int quantity;
 
-        public Reservation(Category category, IReservingEntity owner, DateTime start, DateTime end)
+        public Reservation(Category category, IReservingEntity owner, TimeSlot time)
         {
             this.owner = owner;
-            this.start = start;
-            this.end = end;
+            this.timeSlot = time;
             this.category = category;
         }
-        public Reservation(Category category, int quantity ,IReservingEntity owner, DateTime start, DateTime end)
+        public Reservation(Category category, int quantity ,IReservingEntity owner, TimeSlot time)
         {
             this.owner = owner;
-            this.start = start;
-            this.end = end;
+            this.timeSlot = time;
             this.category = category;
             this.quantity = quantity;
         }
@@ -44,8 +41,7 @@ namespace Gym_Booking_Manager
 
         public override string ToString()
         {
-            return $"{category} {quantity} {owner}: {start} - {end}";
+            return $"==============================\nCateory:{category}\nreservation for:{owner}\n{timeSlot}\n==============================\n";
         }
-
     }
 }

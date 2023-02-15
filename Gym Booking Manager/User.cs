@@ -285,7 +285,7 @@ namespace Gym_Booking_Manager
         }
         public override string ToString()
         {
-            return $"{name}, {Id}";
+            return $"{name}, Id:{Id}";
         }
     }
 

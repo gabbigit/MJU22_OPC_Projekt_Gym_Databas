@@ -78,7 +78,7 @@ namespace Gym_Booking_Manager
             if (this.calendar.isAvailable(timeslot.Start, timeslot.End))
             {
                 // Make the reservation
-                this.calendar.AddReservation(new Reservation(category, this.quantity, owner, timeslot.Start, timeslot.End));
+                this.calendar.AddReservation(new Reservation(category, this.quantity, owner, timeslot));
             }
             else
             {

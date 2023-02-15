@@ -142,9 +142,7 @@ namespace Gym_Booking_Manager
                 switch (option)
                 {
                     case 1:
-                        foreach(Equipment equipment in DB.Read<Equipment>()){
-                            Console.WriteLine(equipment);
-                        }
+                        BookEquipment(DB);
                         break;
                     case 2:
                         Console.WriteLine("Option 2");
@@ -164,5 +162,44 @@ namespace Gym_Booking_Manager
             
         }
         // Static methods for the program
+        static void BookEquipment(GymDatabaseContext DB)
+        {
+            int i = 1;
+            foreach (Equipment equipment in DB.Read<Equipment>())
+            {
+                Console.WriteLine(i + ": " + equipment);
+                i++;
+            }
+            Console.WriteLine("Choose equipment:");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            Equipment equipment1 = DB.Read<Equipment>()[choice - 1];
+            Console.WriteLine("Choose time:(yyyy-mm-dd hh:mm)");
+            DateTime time = Convert.ToDateTime(Console.ReadLine());
+            if (time < DateTime.Now)
+            {
+                Console.WriteLine("You can't book a time in the past.");
+                return;
+            }
+            TimeSlot timeSlot = new TimeSlot(time);
+            Console.WriteLine("Choose user:");
+            int j = 1;
+            foreach (Customer customer in DB.Read<Customer>())
+            {
+                Console.WriteLine(j + ": " + customer);
+                j++;
+            }
+            int choice2 = Convert.ToInt32(Console.ReadLine());
+            Customer user = DB.Read<Customer>()[choice2 - 1];
+            Console.WriteLine("Select a category for your reservation:");
+            int k = 1;
+            foreach (string category in Enum.GetNames(typeof(Reservation.Category)))
+            {
+                Console.WriteLine(k + ": " + category);
+                k++;
+            }
+            Reservation.Category choice3 = (Reservation.Category)Convert.ToInt32(Console.ReadLine())-1;
+            equipment1.MakeReservation(choice3 , user, timeSlot);
+            equipment1.ViewTimeTable();
+        }
     }
 }
