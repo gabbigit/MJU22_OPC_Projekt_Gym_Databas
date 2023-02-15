@@ -50,7 +50,7 @@ namespace Gym_Booking_Manager
         }
         public override string ToString()
         {
-            return $"{this.name}, quantity:{this.quantity}";
+            return $"{this.name}, quantity:{Quantity}";
         }
 
         // Every class C to be used for DbSet<C> should have the ICSVable interface and the following implementation.
