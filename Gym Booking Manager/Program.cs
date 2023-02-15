@@ -118,7 +118,7 @@ namespace Gym_Booking_Manager
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
                 User user = User.GetUserById(DB, id);
-                if (user != null) { Console.WriteLine("Get Bent.(No user)."); }
+                if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
             }
 
 
