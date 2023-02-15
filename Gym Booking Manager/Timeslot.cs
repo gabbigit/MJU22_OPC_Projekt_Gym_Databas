@@ -12,6 +12,9 @@ namespace Gym_Booking_Manager
         private DateTime start;
         private DateTime end;
 
+        public DateTime Start { get => start; }
+        public DateTime End { get => end; }
+
         public TimeSlot(DateTime start)
         {
             this.start = start;

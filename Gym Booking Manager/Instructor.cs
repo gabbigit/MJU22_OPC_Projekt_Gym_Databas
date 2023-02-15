@@ -67,18 +67,18 @@ namespace Gym_Booking_Manager
             }
 
         }
-        public void MakeReservation(Reservation.Category category, IReservingEntity owner, DateTime start, DateTime end)
+        public void MakeReservation(Reservation.Category category, IReservingEntity owner, TimeSlot timeslot)
         {
             // Check if the reservation is valid
-            if (start > end)
+            if (timeslot.Start > timeslot.End)
             {
                 throw new ArgumentException("Start time must be before end time.");
             }
             // Check if the reservation is available
-            if (this.calendar.isAvailable(start, end))
+            if (this.calendar.isAvailable(timeslot.Start, timeslot.End))
             {
                 // Make the reservation
-                this.calendar.AddReservation(new Reservation(category, this.quantity, owner, start, end));
+                this.calendar.AddReservation(new Reservation(category, this.quantity, owner, timeslot.Start, timeslot.End));
             }
             else
             {

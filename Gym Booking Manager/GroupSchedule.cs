@@ -25,10 +25,10 @@ namespace Gym_Booking_Manager
 
         public void ViewSchedule()
         {
-                Console.WriteLine($"Group Schedule(s):");
-                foreach (GroupActivity activity in activities)
+                Console.WriteLine($"Group Schedule:");
+            foreach (GroupActivity activity in activities)
                 {
-                    Console.WriteLine("===========================================");
+                Console.WriteLine("===========================================");
                 Console.WriteLine(activity + "\n");
                 }
         }
