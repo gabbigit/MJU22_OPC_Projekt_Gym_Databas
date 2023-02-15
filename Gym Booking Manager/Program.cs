@@ -102,28 +102,13 @@ namespace Gym_Booking_Manager
             Console.WriteLine(timeSlot3);
             */
             /* ---------------------------------------------------->START<------------------------------------------------------------------ */
+            // user.GetType().Name;
+
 
             Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
             int answer = Convert.ToInt32(Console.ReadLine());
             if (answer == 1) {
-                User user = User.Create();
-                string UserType = user.GetType().Name;
-                switch(UserType)
-                {
-                    case "Customer":
-                        DB.Create<Customer>(user as Customer);
-                        break;
-                    case "Staff":
-                        DB.Create<Staff>(user as Staff);
-                        break;
-                    case "Admin":
-                        DB.Create<Admin>(user as Admin);
-                        break;
-                    case "Service":
-                        DB.Create<Service>(user as Service);
-                        break;
-                    default: break;
-                }
+                User user = User.Create(DB);
                 Console.WriteLine($"This is your ID(save it--Or dont. see if i care.):{user.GetType().GUID}");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
@@ -132,43 +117,8 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
-                //Console.WriteLine(user);
-
-                // Search for the User with the right Id. "ArgumentOutOfRangeException"
-                try
-                {
-                    List<Customer> customers = DB.Read<Customer>("Id", id);
-                    User user = customers[0];
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    try
-                    {
-                        List<Staff> staff = DB.Read<Staff>("Id", id);
-                        User user = staff[0];
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        try
-                        {
-                            List<Admin> admins = DB.Read<Admin>("Id", id);
-                            User user = admins[0];
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            try
-                            {
-                                List<Service> services = DB.Read<Service>("Id", id);
-                                User user = services[0];
-                            }
-                            catch (ArgumentOutOfRangeException)
-                            {
-                                // the ID was not found in any of the tables
-                                Console.WriteLine("Not found");
-                            }
-                        }
-                    }
-                }
+                User user = User.GetUserById(DB, id);
+                if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
             }
 
 

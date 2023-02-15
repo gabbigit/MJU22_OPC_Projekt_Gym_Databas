@@ -33,7 +33,7 @@ namespace Gym_Booking_Manager
             throw new NotImplementedException();
         }
 
-        public static User Create()
+        public static User Create(GymDatabaseContext DB)
         {
             Console.WriteLine("Enter your name: ");
             string name = Console.ReadLine();
@@ -45,35 +45,93 @@ namespace Gym_Booking_Manager
             Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin, 3 for Service): ");
             int choice = int.Parse(Console.ReadLine());
             //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
+            
 
-
-            return ChooseUserType(name, phone, email, id, choice);
+            return ChooseUserType(name, phone, email, id, choice, DB);
         }
-        public static void Remove()
+        public static void Remove(GymDatabaseContext DB, string id)
         {
             // TODO
+            bool DEL = true;
+            User user = GetUserById(DB, id, DEL);
+            DB.Delete<Customer>(user as Customer);
             throw new NotImplementedException();
+
             //DB.Delete<Admin>(user as Admin);
         }
 
-        public static void GetUserById(string id)
+        public static User GetUserById(GymDatabaseContext DB, string id, bool DEL = false)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            // Search for the User with the right Id. "ArgumentOutOfRangeException"
+            // I could replace this by checking if 'customers.count != 0'..  ¯\_(ツ)_/¯
+            try
+            {
+                List<Customer> customers = DB.Read<Customer>("Id", id);
+                User user = customers[0];
+                if (DEL == true) { DB.Delete<Customer>(user as Customer); }
+                return user;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                try
+                {
+                    List<Staff> staff = DB.Read<Staff>("Id", id);
+                    User user = staff[0];
+                    if (DEL == true) { DB.Delete<Staff>(user as Staff); }
+                    return user;
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    try
+                    {
+                        List<Admin> admins = DB.Read<Admin>("Id", id);
+                        User user = admins[0];
+                        if (DEL == true) { DB.Delete<Admin>(user as Admin); }
+                        return user;
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        try
+                        {
+                            List<Service> services = DB.Read<Service>("Id", id);
+                            User user = services[0];
+                            if (DEL == true) { DB.Delete<Service>(user as Service); }
+                            return user;
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            // the ID was not found in any of the tables
+                            Console.WriteLine("Not found");
+                            User user = null;
+                            return user;
+                        }
+                    }
+                }
+            }
 
         }
 
-        public static User ChooseUserType(string name, string phone, string email, Guid Id, int choice)
+        public static User ChooseUserType(string name, string phone, string email, Guid Id, int choice, GymDatabaseContext DB)
         {
             switch (choice)
             {
                 case 0:
-                    return new Customer(name, phone, email,Id);
+                    User C_User = new Customer(name, phone, email, Id);
+                    DB.Create<Customer>(C_User as Customer);
+                    return C_User;
                 case 1:
-                    return new Staff(name, phone, email, Id);
+                    User S_User = new Staff(name, phone, email, Id);
+                    DB.Create<Staff>(S_User as Staff);
+                    return S_User;
                 case 2:
-                    return new Admin(name, phone, email, Id);
+                    User A_User = new Admin(name, phone, email, Id);
+                    DB.Create<Admin>(A_User as Admin);
+                    return A_User;
                 case 3:
-                    return new Service(name, phone, email, Id);
+                    User SE_User = new Service(name, phone, email, Id);
+                    DB.Create<Service>(SE_User as Service);
+                    return SE_User;
                 default:
                     throw new ArgumentException("Invalid choice");
             }
