@@ -123,41 +123,8 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
-                // Search for the User with the right Id. "ArgumentOutOfRangeException"
-                try
-                {
-                    List<Customer> customers = DB.Read<Customer>("Id", id);
-                    User user = customers[0];
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    try
-                    {
-                        List<Staff> staff = DB.Read<Staff>("Id", id);
-                        User user = staff[0];
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        try
-                        {
-                            List<Admin> admins = DB.Read<Admin>("Id", id);
-                            User user = admins[0];
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            try
-                            {
-                                List<Service> services = DB.Read<Service>("Id", id);
-                                User user = services[0];
-                            }
-                            catch (ArgumentOutOfRangeException)
-                            {
-                                // the ID was not found in any of the tables
-                                Console.WriteLine("Not found");
-                            }
-                        }
-                    }
-                }
+                User user = User.GetUserById(DB, id);
+                if (user != null) { Console.WriteLine("Get Bent.(No user)."); }
             }
 
 
