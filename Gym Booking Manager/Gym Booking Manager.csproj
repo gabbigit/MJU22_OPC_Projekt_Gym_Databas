@@ -13,7 +13,9 @@
     <None Include="bin\Debug\net6.0\GymDB\storage\customer.csv" />
     <None Include="bin\Debug\net6.0\GymDB\storage\equipment.csv" />
     <None Include="bin\Debug\net6.0\GymDB\storage\instructor.csv" />
+    <None Include="bin\Debug\net6.0\GymDB\storage\service.csv" />
     <None Include="bin\Debug\net6.0\GymDB\storage\space.csv" />
+    <None Include="bin\Debug\net6.0\GymDB\storage\staff.csv" />
   </ItemGroup>
 
 </Project>
