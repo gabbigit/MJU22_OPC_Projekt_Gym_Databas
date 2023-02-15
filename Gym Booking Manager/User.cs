@@ -51,13 +51,9 @@ namespace Gym_Booking_Manager
         }
         public static void Remove(GymDatabaseContext DB, string id)
         {
-            // TODO
+            // throw new NotImplementedException();
             bool DEL = true;
-            User user = GetUserById(DB, id, DEL);
-            DB.Delete<Customer>(user as Customer);
-            throw new NotImplementedException();
-
-            //DB.Delete<Admin>(user as Admin);
+            GetUserById(DB, id, DEL);
         }
 
         public static User GetUserById(GymDatabaseContext DB, string id, bool DEL = false)

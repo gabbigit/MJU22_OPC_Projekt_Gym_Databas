@@ -20,7 +20,7 @@ namespace Gym_Booking_Manager
         public string Name { get => name; }
         public int Quantity { get => quantity; }
 
-        public Equipment(Category category, String name, int quantity, bool largeEquipment)
+        public Equipment(Category category, String name, int quantity, bool largeEquipment = true)
         {
             this.category = category;
             this.name = name;
@@ -32,6 +32,8 @@ namespace Gym_Booking_Manager
         public Equipment(Dictionary<String, String> constructionArgs)
         {
             this.name = constructionArgs[nameof(name)];
+            this.quantity = int.Parse(constructionArgs[nameof(quantity)]);
+            this.largeEquipment = bool.Parse(constructionArgs[nameof(largeEquipment)]);
             if (!Category.TryParse(constructionArgs[nameof(category)], out this.category))
             {
                 throw new ArgumentException("Couldn't parse a valid Space.Category value.", nameof(category));
@@ -50,13 +52,13 @@ namespace Gym_Booking_Manager
         }
         public override string ToString()
         {
-            return $"{this.name}, quantity:{Quantity}";
+            return $"{this.name}, quantity:{this.quantity}, category:{this.category}, largeEquipment:{this.largeEquipment}";
         }
 
         // Every class C to be used for DbSet<C> should have the ICSVable interface and the following implementation.
         public string CSVify()
         {
-            return $"{nameof(category)}:{category.ToString()},{nameof(name)}:{name},{nameof(quantity)}:{Quantity},{nameof(largeEquipment)}:{largeEquipment}";
+            return $"{nameof(category)}:{category.ToString()},{nameof(name)}:{name},{nameof(quantity)}:{quantity.ToString()},{nameof(largeEquipment)}:{largeEquipment.ToString()}";
         }
 
         //This enum contains just exampels of equipment
