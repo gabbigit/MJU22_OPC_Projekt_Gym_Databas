@@ -65,6 +65,14 @@ namespace Gym_Booking_Manager
             groupActivity.SignUp(ruben);
             groupActivity.SignUp(david);
             groupSchedule.ViewSchedule();
+            Space space1 = new Space(Space.Category.Lane, "Lane");
+            GroupActivity groupActivity1 = new GroupActivity("test", 3, time2, instructor, space1, treadmill);
+            groupSchedule.AddActivity(groupActivity1);
+            groupActivity.SignUp(ruben);
+            groupSchedule.ViewSchedule();
+
+
+
 
             foreach (Equipment equipment in DB.Read<Equipment>())
             {

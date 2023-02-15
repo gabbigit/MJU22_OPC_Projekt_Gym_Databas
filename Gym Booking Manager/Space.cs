@@ -85,14 +85,29 @@ namespace Gym_Booking_Manager
             // Show?
             foreach (Reservation reservation in tableSlice)
             {
-               // Do something?
+                Console.WriteLine(reservation);
             }
 
         }
 
         public void MakeReservation(Reservation.Category category, IReservingEntity owner, TimeSlot timeslot)
         {
-            throw new NotImplementedException();
+
+            // Check if the reservation is valid
+            if (timeslot.Start > timeslot.End)
+            {
+                throw new ArgumentException("Start time must be before end time.");
+            }
+            // Check if the reservation is available
+            if (this.calendar.isAvailable(timeslot.Start, timeslot.End))
+            {
+                // Make the reservation
+                this.calendar.AddReservation(new Reservation(category, owner, timeslot.Start, timeslot.End));
+            }
+            else
+            {
+                throw new ArgumentException("The reservation is not available.");
+            }
         }
 
         public void CancelReservation()
