@@ -49,16 +49,66 @@ namespace Gym_Booking_Manager
 
             return ChooseUserType(name, phone, email, id, choice);
         }
-        public static void Remove()
+        public static void Remove(GymDatabaseContext DB, string id)
         {
             // TODO
+            bool DEL = true;
+            User user = GetUserById(DB, id, DEL);
+            DB.Delete<Customer>(user as Customer);
             throw new NotImplementedException();
+
             //DB.Delete<Admin>(user as Admin);
         }
 
-        public static void GetUserById(string id)
+        public static User GetUserById(GymDatabaseContext DB, string id, bool DEL = false)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            // Search for the User with the right Id. "ArgumentOutOfRangeException"
+            // I could replace this by checking if 'customers.count != 0'..  ¯\_(ツ)_/¯
+            try
+            {
+                List<Customer> customers = DB.Read<Customer>("Id", id);
+                User user = customers[0];
+                if (DEL == true) { DB.Delete<Customer>(user as Customer); }
+                return user;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                try
+                {
+                    List<Staff> staff = DB.Read<Staff>("Id", id);
+                    User user = staff[0];
+                    if (DEL == true) { DB.Delete<Staff>(user as Staff); }
+                    return user;
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    try
+                    {
+                        List<Admin> admins = DB.Read<Admin>("Id", id);
+                        User user = admins[0];
+                        if (DEL == true) { DB.Delete<Admin>(user as Admin); }
+                        return user;
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        try
+                        {
+                            List<Service> services = DB.Read<Service>("Id", id);
+                            User user = services[0];
+                            if (DEL == true) { DB.Delete<Service>(user as Service); }
+                            return user;
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            // the ID was not found in any of the tables
+                            Console.WriteLine("Not found");
+                            User user = null;
+                            return user;
+                        }
+                    }
+                }
+            }
 
         }
 

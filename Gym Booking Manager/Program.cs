@@ -123,8 +123,6 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
-                //Console.WriteLine(user);
-
                 // Search for the User with the right Id. "ArgumentOutOfRangeException"
                 try
                 {
