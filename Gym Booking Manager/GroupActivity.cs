@@ -31,11 +31,11 @@ namespace Gym_Booking_Manager
             get => timeSlot;
         }
 
-        public GroupActivity(string activityID, int participantLimit, DateTime start, DateTime end, Instructor instructor, Space space, Equipment equipment)
+        public GroupActivity(string activityID, int participantLimit, TimeSlot timeSlot, Instructor instructor, Space space, Equipment equipment)
         {
             this.activityID = activityID;
             this.participantLimit = participantLimit;
-            this.timeSlot = new TimeSlot(start, end);
+            this.timeSlot = new TimeSlot(timeSlot.Start);
             this.instructor = instructor;
             this.space = space;
             this.equipment = equipment;
@@ -69,7 +69,7 @@ namespace Gym_Booking_Manager
         public override string ToString()
         {
             return $"Activity: {activityID}\ninstructor: {Instructor.Name}\n{timeSlot}\nSpace: {space.Name}" +
-                $"\nParticipants: {PartisipantsToString()}\nEquipment: {equipment.Name}";
+                $"\nParticipants: {PartisipantsToString()} (Free slots left: {participantLimit - participants.Count})\nEquipment: {equipment.Name}";
         }
     }
    

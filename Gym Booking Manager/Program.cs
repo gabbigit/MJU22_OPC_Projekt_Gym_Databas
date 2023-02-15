@@ -41,28 +41,37 @@ namespace Gym_Booking_Manager
             DateTime t2 = new DateTime(year: 2023, month: 10, day: 10, hour: 13, minute: 00, second: 00);
             DateTime t3 = new DateTime(year: 2023, month: 10, day: 10, hour: 14, minute: 00, second: 00);
             DateTime t4 = new DateTime(year: 2023, month: 10, day: 10, hour: 15, minute: 00, second: 00);
+            TimeSlot time = new TimeSlot(t1);
+            TimeSlot time2 = new TimeSlot(t2);
             Space space = new Space(Space.Category.Hall, "Hall");
             Space space2 = new Space(Space.Category.Studio, "Studio 2");
-            Equipment treadmill = new Equipment(Equipment.Category.Gym, "Treadmill", 3, true);
-            Equipment gym = new Equipment(Equipment.Category.Gym, "Gym", 1, true);
+            Equipment treadmill = new Equipment(Equipment.Category.Gym, "Treadmill", 10, true);
+            Equipment gym = new Equipment(Equipment.Category.Gym, "Gym", 10, true);
             DB.Create<Equipment>(gym);
-            gym.MakeReservation(Reservation.Category.Gym, ruben, t1, t2);
+            gym.MakeReservation(Reservation.Category.Gym, ruben, time);
             //gym.ViewTimeTable();
             DB.Create<Equipment>(treadmill);
-            treadmill.MakeReservation(0,ruben, t1, t2);
+            treadmill.MakeReservation(0,ruben, time);
             //treadmill.ViewTimeTable();
             Instructor instructor = new Instructor(Instructor.Category.PT, "Tom");
             DB.Create<Instructor>(instructor);
-            instructor.MakeReservation(Reservation.Category.PT, ruben, t1, t2);
+            instructor.MakeReservation(Reservation.Category.PT, ruben, time);
             //instructor.ViewTimeTable();
-            GroupActivity groupActivity = new GroupActivity("Activity 1", 2, t1, t2, instructor, space, treadmill);
+            GroupActivity groupActivity = new GroupActivity("Activity 1", 2, time2, instructor, space, treadmill);
             GroupSchedule groupSchedule = new GroupSchedule(groupActivity);
-            GroupActivity groupActivity2 = new GroupActivity("Activity 2", 3, t3, t4, instructor, space2, gym);
+            GroupActivity groupActivity2 = new GroupActivity("Activity 2", 3, time, instructor, space2, gym);
             groupSchedule.AddActivity(groupActivity2);
             groupActivity2.SignUp(ruben);
             groupActivity.SignUp(ruben);
             groupActivity.SignUp(david);
             groupSchedule.ViewSchedule();
+
+            foreach (Equipment equipment in DB.Read<Equipment>())
+            {
+                Console.WriteLine(equipment);
+                Console.WriteLine(equipment.Quantity);
+            }
+            Console.WriteLine(treadmill.Quantity);
             /*
             foreach (Equipment e in DB.Read<Equipment>())
             {
@@ -81,7 +90,7 @@ namespace Gym_Booking_Manager
                 Console.WriteLine(c);
             }
             */
-            
+
             /*
             DateTime d1 = new DateTime(year: 2023, month: 10, day: 10, hour: 12, minute: 00, second:00);
             DateTime d2 = new DateTime(year: 2023, month: 10, day: 11);

@@ -13,7 +13,7 @@ namespace Gym_Booking_Manager
     // I.E MakeReservation(User that does the reservvation), CancelReservation(TODO), ViewTimeTable(TODO)
     internal interface IReservable
     {
-        void MakeReservation(Reservation.Category category, IReservingEntity owner, DateTime start, DateTime end);
+        void MakeReservation(Reservation.Category category, IReservingEntity owner, TimeSlot timeSlot);
         void CancelReservation();
         void ViewTimeTable(); // start and end as arguments?
     }

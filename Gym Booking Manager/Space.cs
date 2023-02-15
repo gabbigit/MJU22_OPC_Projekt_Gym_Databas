@@ -90,7 +90,7 @@ namespace Gym_Booking_Manager
 
         }
 
-        public void MakeReservation(Reservation.Category category, IReservingEntity owner, DateTime start, DateTime end)
+        public void MakeReservation(Reservation.Category category, IReservingEntity owner, TimeSlot timeslot)
         {
             throw new NotImplementedException();
         }
