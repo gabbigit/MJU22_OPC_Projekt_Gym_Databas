@@ -33,7 +33,7 @@ namespace Gym_Booking_Manager
             throw new NotImplementedException();
         }
 
-        public static User Create()
+        public static User Create(GymDatabaseContext DB)
         {
             Console.WriteLine("Enter your name: ");
             string name = Console.ReadLine();
@@ -45,9 +45,9 @@ namespace Gym_Booking_Manager
             Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin, 3 for Service): ");
             int choice = int.Parse(Console.ReadLine());
             //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
+            
 
-
-            return ChooseUserType(name, phone, email, id, choice);
+            return ChooseUserType(name, phone, email, id, choice, DB);
         }
         public static void Remove(GymDatabaseContext DB, string id)
         {
@@ -112,18 +112,26 @@ namespace Gym_Booking_Manager
 
         }
 
-        public static User ChooseUserType(string name, string phone, string email, Guid Id, int choice)
+        public static User ChooseUserType(string name, string phone, string email, Guid Id, int choice, GymDatabaseContext DB)
         {
             switch (choice)
             {
                 case 0:
-                    return new Customer(name, phone, email,Id);
+                    User C_User = new Customer(name, phone, email, Id);
+                    DB.Create<Customer>(C_User as Customer);
+                    return C_User;
                 case 1:
-                    return new Staff(name, phone, email, Id);
+                    User S_User = new Staff(name, phone, email, Id);
+                    DB.Create<Staff>(S_User as Staff);
+                    return S_User;
                 case 2:
-                    return new Admin(name, phone, email, Id);
+                    User A_User = new Admin(name, phone, email, Id);
+                    DB.Create<Admin>(A_User as Admin);
+                    return A_User;
                 case 3:
-                    return new Service(name, phone, email, Id);
+                    User SE_User = new Service(name, phone, email, Id);
+                    DB.Create<Service>(SE_User as Service);
+                    return SE_User;
                 default:
                     throw new ArgumentException("Invalid choice");
             }
