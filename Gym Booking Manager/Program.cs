@@ -121,45 +121,36 @@ namespace Gym_Booking_Manager
             }
             else if (answer == 2)
             {
-                //throw new NotImplementedException(); "ArgumentOutOfRangeException"
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
-                //List<Customer> umm = DB.Read<Customer>("Id", id);
-                //User user = umm[0];
                 //Console.WriteLine(user);
 
+                // Search for the User with the right Id. "ArgumentOutOfRangeException"
                 try
                 {
                     List<Customer> customers = DB.Read<Customer>("Id", id);
                     User user = customers[0];
-                    // handle the user object that was found
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    // the ID was not found in the Customer table, try the Staff table next
                     try
                     {
                         List<Staff> staff = DB.Read<Staff>("Id", id);
                         User user = staff[0];
-                        // handle the user object that was found
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        // the ID was not found in the Staff table, try the Admin table next
                         try
                         {
                             List<Admin> admins = DB.Read<Admin>("Id", id);
                             User user = admins[0];
-                            // handle the user object that was found
                         }
                         catch (ArgumentOutOfRangeException)
                         {
-                            // the ID was not found in the Admin table, try the Service table next
                             try
                             {
                                 List<Service> services = DB.Read<Service>("Id", id);
                                 User user = services[0];
-                                // handle the user object that was found
                             }
                             catch (ArgumentOutOfRangeException)
                             {
@@ -169,38 +160,6 @@ namespace Gym_Booking_Manager
                         }
                     }
                 }
-
-                /*
-                Console.WriteLine("Enter ID:");
-                string id = Console.ReadLine();
-
-                if (DB.Read<Customer>("Id", id) != null) { List<Customer> userL = DB.Read<Customer>("Id", id); User user = userL[0]; }
-
-                User user = null;
-                List<Type> userTypes = new List<Type> { typeof(Customer), typeof(Staff), typeof(Admin), typeof(Service),  };
-                foreach (Type userType in userTypes)
-                {
-                    MethodInfo readMethod = typeof(DB).GetMethod("Read").MakeGenericMethod(userType);
-                    List<User> userList = (List<User>)readMethod.Invoke(DB, new object[] { "Id", id });
-                    if (userList.Count > 0)
-                    {
-                        user = userList[0];
-                        break;
-                    }
-                }
-                Console.WriteLine(user.ToString);
-
-                User user = DB.Read<User>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a");
-                List<User> ts = DB.Read<User>("Id", id);
-                User user = ts[0];
-                foreach (User u in ts)
-                {
-                    Console.WriteLine(u.ToString());
-                }
-                List<Customer> umm = DB.Read<Customer>("Id", id);
-                User user = umm[0];
-                Console.WriteLine(umm.ToString());
-                */
             }
 
 

@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static Gym_Booking_Manager.Space;
+using static Gym_Booking_Manager.LocalStorage;
 
 #if DEBUG
 [assembly: InternalsVisibleTo("Tests")]
@@ -50,7 +51,9 @@ namespace Gym_Booking_Manager
         }
         public static void Remove()
         {
+            // TODO
             throw new NotImplementedException();
+            //DB.Delete<Admin>(user as Admin);
         }
 
         public static void GetUserById(string id)
