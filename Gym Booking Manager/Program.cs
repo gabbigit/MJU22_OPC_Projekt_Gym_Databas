@@ -63,14 +63,14 @@ namespace Gym_Booking_Manager
             //GroupActivity groupActivity2 = new GroupActivity("Activity 2", 3, time, instructor, space2, gym);
             //groupSchedule.AddActivity(groupActivity2);
             //groupActivity2.SignUp(ruben);
-            groupActivity.SignUp(ruben);
-            groupActivity.SignUp(david);
-            groupSchedule.ViewSchedule();
+            //groupActivity.SignUp(ruben);
+            //groupActivity.SignUp(david);
+            //groupSchedule.ViewSchedule();
             Space space1 = new Space(Space.Category.Lane, "Lane");
-            GroupActivity groupActivity1 = new GroupActivity("test", 3, time2, instructor, space1, treadmill);
-            groupSchedule.AddActivity(groupActivity1);
-            groupActivity.SignUp(ruben);
-            groupSchedule.ViewSchedule();
+            //GroupActivity groupActivity1 = new GroupActivity("test", 3, time2, instructor, space1, treadmill);
+            //groupSchedule.AddActivity(groupActivity1);
+            //groupActivity.SignUp(ruben);
+            //groupSchedule.ViewSchedule();
 
 
 
