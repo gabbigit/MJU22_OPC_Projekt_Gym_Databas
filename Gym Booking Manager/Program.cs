@@ -45,33 +45,29 @@ namespace Gym_Booking_Manager
             TimeSlot time2 = new TimeSlot(t2);
             Space space = new Space(Space.Category.Hall, "Hall");
             Space space2 = new Space(Space.Category.Studio, "Studio 2");
-            Equipment treadmill = new Equipment(Equipment.Category.Gym, "Treadmill", 10, true);
             //Equipment gym = new Equipment(Equipment.Category.Gym, "Gym", 10, true);
             //DB.Create<Equipment>(gym);
             //gym.MakeReservation(Reservation.Category.Gym, ruben, time);
             //gym.ViewTimeTable();
             //DB.Create<Equipment>(treadmill);
-            treadmill.MakeReservation(0,ruben, time);
+            //treadmill.MakeReservation(0,ruben, time);
             //treadmill.ViewTimeTable();
             Instructor instructor = new Instructor(Instructor.Category.PT, "Tom");
-            DB.Create<Instructor>(instructor);
-            instructor.MakeReservation(Reservation.Category.PT, ruben, time);
+            Equipment gym = new Equipment(Equipment.Category.Gym, "Gym", 10, true);
+            DB.Create<Equipment>(gym);
+            //DB.Create<Instructor>(instructor);
+            //instructor.MakeReservation(Reservation.Category.PT, ruben, time);
             //instructor.ViewTimeTable();
-            GroupActivity groupActivity = new GroupActivity("Activity 1", 2, time2, instructor, space, treadmill);
-            GroupSchedule groupSchedule = new GroupSchedule(groupActivity);
+            //GroupActivity groupActivity = new GroupActivity("Activity 1", 2, time2, instructor, space, treadmill);
+            //GroupSchedule groupSchedule = new GroupSchedule(groupActivity);
             //GroupActivity groupActivity2 = new GroupActivity("Activity 2", 3, time, instructor, space2, gym);
             //groupSchedule.AddActivity(groupActivity2);
             //groupActivity2.SignUp(ruben);
-            groupActivity.SignUp(ruben);
-            groupActivity.SignUp(david);
-            groupSchedule.ViewSchedule();
+            //groupActivity.SignUp(ruben);
+            //groupActivity.SignUp(david);
+            //groupSchedule.ViewSchedule();
+            //treadmill.ViewTimeTable();
 
-            foreach (Equipment equipment in DB.Read<Equipment>())
-            {
-                Console.WriteLine(equipment);
-                Console.WriteLine(equipment.Name);
-            }
-            Console.WriteLine(treadmill.Quantity);
             /*
             foreach (Equipment e in DB.Read<Equipment>())
             {
@@ -139,6 +135,9 @@ namespace Gym_Booking_Manager
                 switch (option)
                 {
                     case 1:
+                        foreach(Equipment equipment in DB.Read<Equipment>()){
+                            Console.WriteLine(equipment);
+                        }
                         break;
                     case 2:
                         Console.WriteLine("Option 2");
