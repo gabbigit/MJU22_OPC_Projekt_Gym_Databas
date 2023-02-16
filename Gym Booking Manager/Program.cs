@@ -13,6 +13,13 @@ namespace Gym_Booking_Manager
 
         static void Main(string[] args)
         {
+            GymDatabaseContext DB = new GymDatabaseContext();
+            User user = null;
+
+            /*------------------------------------------------------------------^^^^^^^------------------------------------------------------------*/
+
+
+
             /*
                         Customer ruben = new Customer("Ruben");
                         Customer david = new Customer("David");
@@ -30,9 +37,8 @@ namespace Gym_Booking_Manager
                         {
                             Console.WriteLine(c.name);
                         }
-            */
-            GymDatabaseContext DB = new GymDatabaseContext();
-            User user = null;
+            
+
             Customer ruben = new Customer("Ruben", "011-131313", "ruben@test.se", Guid.NewGuid());
             Customer david = new Customer("David", "011-131313", "asd", Guid.NewGuid());
             //userDB.Create<Customer>(ruben);
@@ -76,7 +82,7 @@ namespace Gym_Booking_Manager
 
 
 
-            /*
+            
             foreach (Equipment e in DB.Read<Equipment>())
             {
                 Console.WriteLine(e);
@@ -93,9 +99,9 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine(c);
             }
-            */
+            
 
-            /*
+            
             DateTime d1 = new DateTime(year: 2023, month: 10, day: 10, hour: 12, minute: 00, second:00);
             DateTime d2 = new DateTime(year: 2023, month: 10, day: 11);
             TimeSlot timeSlot = new TimeSlot(d1);
@@ -105,10 +111,12 @@ namespace Gym_Booking_Manager
             Console.WriteLine(timeSlot2);
             Console.WriteLine(timeSlot3);
             */
+
+
+
             /* ---------------------------------------------------->START<------------------------------------------------------------------ */
             // user.GetType().Name;
 
-            User user = null;
             Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
             int answer = Convert.ToInt32(Console.ReadLine());
             if (answer == 1) {
