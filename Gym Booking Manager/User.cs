@@ -197,6 +197,7 @@ namespace Gym_Booking_Manager
                         break;
                     case 4:
                         Console.WriteLine("Exiting the menu...");
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Invalid option, no workie.");
@@ -265,6 +266,7 @@ namespace Gym_Booking_Manager
                         break;
                     case 4:
                         Console.WriteLine("Exiting the menu...");
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Invalid option, no workie.");
@@ -333,6 +335,7 @@ namespace Gym_Booking_Manager
                         break;
                     case 4:
                         Console.WriteLine("Exiting the menu...");
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Invalid option, no workie.");
@@ -412,6 +415,7 @@ namespace Gym_Booking_Manager
                         break;
                     case 4:
                         Console.WriteLine("Exiting the menu...");
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Invalid option, no workie.");
