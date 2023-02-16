@@ -34,7 +34,7 @@ namespace Gym_Booking_Manager
             // This is a placeholder method for now. It will be replaced with a more efficient method later.
             foreach (Reservation reservation in this.reservations)
             {
-                if (reservation.start < end && reservation.end > start)
+                if (reservation.timeSlot.Start < end && reservation.timeSlot.End > start)
                 {
                     return false;
                 }

@@ -1,1 +1,3 @@
 ﻿category:Gym,name:Gym,quantity:10,largeEquipment:True
+category:Bench,name:Bench,quantity:5,largeEquipment:True
+category:Rackets,name:Tennis Racket,quantity:5,largeEquipment:False

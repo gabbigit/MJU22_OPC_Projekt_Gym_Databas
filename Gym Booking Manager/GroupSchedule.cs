@@ -26,7 +26,7 @@ namespace Gym_Booking_Manager
         public void ViewSchedule()
         {
                 Console.WriteLine($"Group Schedule:");
-            foreach (GroupActivity activity in activities)
+                foreach (GroupActivity activity in activities)
                 {
                 Console.WriteLine("===========================================");
                 Console.WriteLine(activity + "\n");
@@ -42,7 +42,7 @@ namespace Gym_Booking_Manager
         }
         public void UpdateActivity(User user, GroupActivity activityID, GroupActivity activity)
         {
-            if (user.GetPerm() == 0)
+            if (user.GetType() == typeof(Customer))
             {
                 Console.WriteLine("You are not allowed to update activities");
             }

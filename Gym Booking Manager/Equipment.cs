@@ -52,7 +52,10 @@ namespace Gym_Booking_Manager
         }
         public override string ToString()
         {
-            return $"{this.name}, quantity:{this.quantity}, category:{this.category}, largeEquipment:{this.largeEquipment}";
+            if (!this.largeEquipment)
+                return $"{this.name}, quantity:{this.quantity}, category:{this.category}, small equipment";
+            else
+                return $"{this.name}, quantity:{this.quantity}, category:{this.category}, large equipment";
         }
 
         // Every class C to be used for DbSet<C> should have the ICSVable interface and the following implementation.
@@ -96,7 +99,7 @@ namespace Gym_Booking_Manager
                 // Make the reservation
                 if (this.quantity > 0)
                 {
-                    this.calendar.AddReservation(new Reservation(category, this.quantity, owner, timeslot.Start, timeslot.End));
+                    this.calendar.AddReservation(new Reservation(category, this.quantity, owner, timeslot));
                     this.quantity -= 1;
                 }
                 else
