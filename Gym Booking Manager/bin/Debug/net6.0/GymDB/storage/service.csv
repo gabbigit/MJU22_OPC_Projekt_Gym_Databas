@@ -1,5 +1,5 @@
-﻿name:Service1,phone:111,email:111@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b1
-name:Service2,phone:222,email:222@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b2
-name:Service3,phone:333,email:333@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b3
-name:Service4,phone:444,email:444@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b4
-name:Service5,phone:555,email:555@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b5
+﻿name:Service1,phone:111,email:111@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b1,perm:3
+name:Service2,phone:222,email:222@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b2,perm:1
+name:Service3,phone:333,email:333@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b3,perm:1
+name:Service4,phone:444,email:444@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b4,perm:1
+name:Service5,phone:555,email:555@Service.se,Id:99479959-ffd3-449d-b238-db8d3555f3b5,perm:1

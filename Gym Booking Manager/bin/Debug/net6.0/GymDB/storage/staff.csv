@@ -1,9 +1,9 @@
-﻿name:Staff1,phone:Staff,email:Staff,Id:08442819-f87c-4418-af29-96be6c2ea4ea
-name:Hobbe,phone:099922-2222,email:hobbe@hotmale.com,Id:741f0097-e18b-4c03-bea7-36aec7bdfecd
-name:Staff1,phone:111,email:111@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf1
-name:Staff2,phone:222,email:222@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf2
-name:Staff3,phone:333,email:333@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf3
-name:Staff4,phone:444,email:444@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf4
-name:Staff5,phone:555,email:555@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf5
-name:Bubba,phone:190-00001111,email:bubba@hotmail.se,Id:a5ef7267-b19f-4d38-b574-a4956897d3bf
-name:Hulle,phone:011-10 20 20,email:hulle@gmail.com,Id:f120901f-e3fb-456b-b3e2-ed0b464f6074
+﻿name:Staff1,phone:Staff,email:Staff,Id:08442819-f87c-4418-af29-96be6c2ea4ea,perm:1
+name:Hobbe,phone:099922-2222,email:hobbe@hotmale.com,Id:741f0097-e18b-4c03-bea7-36aec7bdfecd,perm:1
+name:Staff1,phone:111,email:111@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf1,perm:1
+name:Staff2,phone:222,email:222@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf2,perm:1
+name:Staff3,phone:333,email:333@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf3,perm:1
+name:Staff4,phone:444,email:444@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf4,perm:1
+name:Staff5,phone:555,email:555@Staff.se,Id:92742d60-372a-45c4-bfde-a2e89de09cf5,perm:1
+name:Bubba,phone:190-00001111,email:bubba@hotmail.se,Id:a5ef7267-b19f-4d38-b574-a4956897d3bf,perm:1
+name:Hulle,phone:011-10 20 20,email:hulle@gmail.com,Id:f120901f-e3fb-456b-b3e2-ed0b464f6074,perm:1

@@ -154,10 +154,11 @@ namespace Gym_Booking_Manager
             this.phone = dict[nameof(phone)];
             this.email = dict[nameof(email)];
             this.Id = Guid.Parse(dict[nameof(Id)]);
+            this.perm = int.Parse(dict[nameof(perm)]);
         }
         public new string CSVify()
         {
-            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
+            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id},{nameof(perm)}:{this.perm}";
         }
         public override string ToString()
         {
@@ -223,10 +224,11 @@ namespace Gym_Booking_Manager
             this.phone = dict[nameof(phone)];
             this.email = dict[nameof(email)];
             this.Id = Guid.Parse(dict[nameof(Id)]);
+            this.perm = int.Parse(dict[nameof(perm)]);
         }
         public string CSVify()
         {
-            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
+            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id},{nameof(perm)}:{this.perm}";
         }
         public override string ToString()
         {
@@ -292,10 +294,11 @@ namespace Gym_Booking_Manager
             this.phone = dict[nameof(phone)];
             this.email = dict[nameof(email)];
             this.Id = Guid.Parse(dict[nameof(Id)]);
+            this.perm = int.Parse(dict[nameof(perm)]);
         }
         public string CSVify()
         {
-            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
+            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id},{nameof(perm)}:{this.perm}";
         }
         public override string ToString()
         {
@@ -367,6 +370,7 @@ namespace Gym_Booking_Manager
             this.phone = dict[nameof(phone)];
             this.email = dict[nameof(email)];
             this.Id = Guid.Parse(dict[nameof(Id)]);
+            this.perm = int.Parse(dict[nameof(perm)]);
         }
         public int CompareTo(Customer? other)
         {
@@ -380,7 +384,7 @@ namespace Gym_Booking_Manager
 
         public string CSVify()
         {
-            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id}";
+            return $"{nameof(name)}:{this.name},{nameof(phone)}:{this.phone},{nameof(email)}:{this.email},{nameof(Id)}:{this.Id},{nameof(perm)}:{this.perm}";
         }
         public void PrintAllInfo()
         {
