@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Gym_Booking_Manager.Space;
 using static Gym_Booking_Manager.LocalStorage;
+using static Gym_Booking_Manager.Equipment;
 
 #if DEBUG
 [assembly: InternalsVisibleTo("Tests")]
@@ -171,7 +172,7 @@ namespace Gym_Booking_Manager
             // When category is the same, sort on name.
             return this.name.CompareTo(other.name);
         }
-        public static void StaffMenu()
+        public static void StaffMenu(GymDatabaseContext DB, User user)
         {
             int option = 0;
             do
@@ -239,7 +240,7 @@ namespace Gym_Booking_Manager
             // When category is the same, sort on name.
             return this.name.CompareTo(other.name);
         }
-        public static void AdminMenu()
+        public static void AdminMenu(GymDatabaseContext DB, User user)
         {
             int option = 0;
             do
@@ -307,7 +308,7 @@ namespace Gym_Booking_Manager
             // When category is the same, sort on name.
             return this.name.CompareTo(other.name);
         }
-        public static void ServiceMenu()
+        public static void ServiceMenu(GymDatabaseContext DB, User user)
         {
             int option = 0;
             do
@@ -386,7 +387,7 @@ namespace Gym_Booking_Manager
         {
             return $"{name}, Id:{Id}";
         }
-        public static void CustomerMenu()
+        public static void CustomerMenu(GymDatabaseContext DB, User user)
         {
             int option = 0;
             do
@@ -401,7 +402,7 @@ namespace Gym_Booking_Manager
                 switch (option)
                 {
                     case 1:
-                        //BookEquipment(DB, user);
+                        Equipment.BookEquipment(DB, user);
                         break;
                     case 2:
                         Console.WriteLine("Option 2");
