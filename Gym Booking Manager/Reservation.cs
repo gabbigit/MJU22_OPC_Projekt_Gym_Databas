@@ -38,7 +38,7 @@ namespace Gym_Booking_Manager
 
         public override string ToString()
         {
-            return $"==============================\nCateory:{category}\nreservation for:{owner}\n{timeSlot}\n==============================\n";
+            return $"==============================\nCategory:{category}\nreservation for:{owner}\n{timeSlot}\n==============================\n";
         }
     }
 }
