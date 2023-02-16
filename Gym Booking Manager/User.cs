@@ -45,7 +45,7 @@ namespace Gym_Booking_Manager
             Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin, 3 for Service): ");
             int choice = int.Parse(Console.ReadLine());
             //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
-            
+
 
             return ChooseUserType(name, phone, email, id, choice, DB);
         }
@@ -171,8 +171,41 @@ namespace Gym_Booking_Manager
             // When category is the same, sort on name.
             return this.name.CompareTo(other.name);
         }
+        public static void StaffMenu()
+        {
+            int option = 0;
+            do
+            {
+                Console.WriteLine("Option 1");
+                Console.WriteLine("Option 2");
+                Console.WriteLine("Option 3");
+                Console.WriteLine("4. Exit");
+                Console.Write("Enter your option: ");
+                option = Convert.ToInt32(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 1:
+                        //BookEquipment(DB, user);
+                        break;
+                    case 2:
+                        Console.WriteLine("Option 2");
+                        break;
+                    case 3:
+                        Console.WriteLine("Option 3");
+                        break;
+                    case 4:
+                        Console.WriteLine("Exiting the menu...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option, no workie.");
+                        break;
+                }
+                Console.WriteLine();
+            } while (option != 4);
+        }
     }
-    
+
     internal class Admin : User, ICSVable, IComparable<Admin>
     {
         public Admin(string name, string phone, string email, Guid Id) : base(name)
@@ -206,13 +239,46 @@ namespace Gym_Booking_Manager
             // When category is the same, sort on name.
             return this.name.CompareTo(other.name);
         }
+        public static void AdminMenu()
+        {
+            int option = 0;
+            do
+            {
+                Console.WriteLine("Option 1");
+                Console.WriteLine("Option 2");
+                Console.WriteLine("Option 3");
+                Console.WriteLine("4. Exit");
+                Console.Write("Enter your option: ");
+                option = Convert.ToInt32(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 1:
+                        //BookEquipment(DB, user);
+                        break;
+                    case 2:
+                        Console.WriteLine("Option 2");
+                        break;
+                    case 3:
+                        Console.WriteLine("Option 3");
+                        break;
+                    case 4:
+                        Console.WriteLine("Exiting the menu...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option, no workie.");
+                        break;
+                }
+                Console.WriteLine();
+            } while (option != 4);
+        }
     }
 
     internal class Service : User, ICSVable, IComparable<Service>
     {
         public Service(string name, string phone, string email, Guid Id) : base(name)
         {
-            this.perm = 2;
+            this.perm = 3;
             this.phone = phone;
             this.email = email;
             this.Id = Id;
@@ -240,6 +306,39 @@ namespace Gym_Booking_Manager
             if (this.Id != other.Id) return this.Id.CompareTo(other.Id);
             // When category is the same, sort on name.
             return this.name.CompareTo(other.name);
+        }
+        public static void ServiceMenu()
+        {
+            int option = 0;
+            do
+            {
+                Console.WriteLine("Option 1");
+                Console.WriteLine("Option 2");
+                Console.WriteLine("Option 3");
+                Console.WriteLine("4. Exit");
+                Console.Write("Enter your option: ");
+                option = Convert.ToInt32(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 1:
+                        //BookEquipment(DB, user);
+                        break;
+                    case 2:
+                        Console.WriteLine("Option 2");
+                        break;
+                    case 3:
+                        Console.WriteLine("Option 3");
+                        break;
+                    case 4:
+                        Console.WriteLine("Exiting the menu...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option, no workie.");
+                        break;
+                }
+                Console.WriteLine();
+            } while (option != 4);
         }
     }
 
@@ -286,6 +385,39 @@ namespace Gym_Booking_Manager
         public override string ToString()
         {
             return $"{name}, Id:{Id}";
+        }
+        public static void CustomerMenu()
+        {
+            int option = 0;
+            do
+            {
+                Console.WriteLine("Option 1");
+                Console.WriteLine("Option 2");
+                Console.WriteLine("Option 3");
+                Console.WriteLine("4. Exit");
+                Console.Write("Enter your option: ");
+                option = Convert.ToInt32(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 1:
+                        //BookEquipment(DB, user);
+                        break;
+                    case 2:
+                        Console.WriteLine("Option 2");
+                        break;
+                    case 3:
+                        Console.WriteLine("Option 3");
+                        break;
+                    case 4:
+                        Console.WriteLine("Exiting the menu...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option, no workie.");
+                        break;
+                }
+                Console.WriteLine();
+            } while (option != 4);
         }
     }
 

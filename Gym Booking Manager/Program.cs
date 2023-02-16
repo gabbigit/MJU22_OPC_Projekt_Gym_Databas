@@ -13,32 +13,113 @@ namespace Gym_Booking_Manager
 
         static void Main(string[] args)
         {
+            /* ---------------------------------------------------->START<------------------------------------------------------------------ */
             GymDatabaseContext DB = new GymDatabaseContext();
             User user = null;
 
-            /*------------------------------------------------------------------^^^^^^^------------------------------------------------------------*/
+            Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
+            int answer = Convert.ToInt32(Console.ReadLine());
+            if (answer == 1)
+            {
+                user = User.Create(DB);
+                Console.WriteLine($"This is your ID(save it--Or dont. see if i care.):{user.GetType().GUID}");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+            }
+            else if (answer == 2)
+            {
+                Console.WriteLine("Enter ID:");
+                string id = Console.ReadLine();
+                user = User.GetUserById(DB, id);
+                if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
+            }
 
-
-
-            /*
-                        Customer ruben = new Customer("Ruben");
-                        Customer david = new Customer("David");
-                        Customer adam = new Customer("Adam");
-                        TimeSlot timeSlot = new TimeSlot(new DateTime(2023, 10, 10, 20, 30, 00), new DateTime(2023, 10, 10, 21, 00, 00));
-                        Console.WriteLine(timeSlot);
-                        Instructor instructor = new Instructor("Tim");
-                        Space hall = new Space(0, "Hall");
-                        Equipment treadmill = new Equipment(1);
-                        GroupActivity activity1 = new GroupActivity("A1", 2, timeSlot, instructor, hall, treadmill);
-                        activity1.SignUp(ruben);
-                        activity1.SignUp(david);
-                        activity1.SignUp(adam);
-                        foreach(Customer c in activity1.Participants)
-                        {
-                            Console.WriteLine(c.name);
-                        }
-            
-
+            /* ---------------------------------------------------->MENU<------------------------------------------------------------------ */
+            // Make sure 'user' is not null.
+            while (user != null)
+            {
+                int perm = user.GetPerm();
+                do
+                {
+                    // Switch to select the correct menu depending on the 'user'.
+                    switch (perm)
+                    {
+                        case 0:
+                            // User.cs L.389
+                            Customer.CustomerMenu();
+                            break;
+                        case 1:
+                            // User.cs L.174
+                            Staff.StaffMenu();
+                            break;
+                        case 2:
+                            // User.cs L.242
+                            Admin.AdminMenu();
+                            break;
+                        case 3:
+                            // User.cs L.310
+                            Service.ServiceMenu();
+                            break;
+                        default:
+                            Console.WriteLine("Things but also stuff.");
+                            break;
+                    }
+                } while (perm != -1);
+            }
+        }
+        // Static methods for the program
+        static void BookEquipment(GymDatabaseContext DB, User user)
+        {
+            int i = 1;
+            foreach (Equipment equipment in DB.Read<Equipment>())
+            {
+                Console.WriteLine(i + ": " + equipment);
+                i++;
+            }
+            Console.WriteLine("Choose equipment:");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            Equipment equipment1 = DB.Read<Equipment>()[choice - 1];
+            Console.WriteLine("Choose time:(yyyy-mm-dd hh:mm)");
+            DateTime time = Convert.ToDateTime(Console.ReadLine());
+            if (time < DateTime.Now)
+            {
+                Console.WriteLine("You can't book a time in the past.");
+                return;
+            }
+            TimeSlot timeSlot = new TimeSlot(time);
+            Console.WriteLine("Choose user:");
+            int j = 1;
+            Console.WriteLine("Select a category for your reservation:");
+            int k = 1;
+            foreach (string category in Enum.GetNames(typeof(Reservation.Category)))
+            {
+                Console.WriteLine(k + ": " + category);
+                k++;
+            }
+            Reservation.Category choice3 = (Reservation.Category)Convert.ToInt32(Console.ReadLine()) - 1;
+            equipment1.MakeReservation(choice3, user, timeSlot);
+            equipment1.ViewTimeTable();
+        }
+    }
+}
+/*
+            // user.GetType().Name;
+            Customer ruben = new Customer("Ruben");
+            Customer david = new Customer("David");
+            Customer adam = new Customer("Adam");
+            TimeSlot timeSlot = new TimeSlot(new DateTime(2023, 10, 10, 20, 30, 00), new DateTime(2023, 10, 10, 21, 00, 00));
+            Console.WriteLine(timeSlot);
+            Instructor instructor = new Instructor("Tim");
+            Space hall = new Space(0, "Hall");
+            Equipment treadmill = new Equipment(1);
+            GroupActivity activity1 = new GroupActivity("A1", 2, timeSlot, instructor, hall, treadmill);
+            activity1.SignUp(ruben);
+            activity1.SignUp(david);
+            activity1.SignUp(adam);
+            foreach(Customer c in activity1.Participants)
+                {
+                    Console.WriteLine(c.name);
+                }
             Customer ruben = new Customer("Ruben", "011-131313", "ruben@test.se", Guid.NewGuid());
             Customer david = new Customer("David", "011-131313", "asd", Guid.NewGuid());
             //userDB.Create<Customer>(ruben);
@@ -79,10 +160,6 @@ namespace Gym_Booking_Manager
             //groupActivity.SignUp(ruben);
             //groupSchedule.ViewSchedule();
 
-
-
-
-            
             foreach (Equipment e in DB.Read<Equipment>())
             {
                 Console.WriteLine(e);
@@ -99,9 +176,7 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine(c);
             }
-            
 
-            
             DateTime d1 = new DateTime(year: 2023, month: 10, day: 10, hour: 12, minute: 00, second:00);
             DateTime d2 = new DateTime(year: 2023, month: 10, day: 11);
             TimeSlot timeSlot = new TimeSlot(d1);
@@ -110,98 +185,7 @@ namespace Gym_Booking_Manager
             Console.WriteLine(timeSlot);
             Console.WriteLine(timeSlot2);
             Console.WriteLine(timeSlot3);
-            */
-
-
-
-            /* ---------------------------------------------------->START<------------------------------------------------------------------ */
-            // user.GetType().Name;
-
-            Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
-            int answer = Convert.ToInt32(Console.ReadLine());
-            if (answer == 1) {
-                user = User.Create(DB);
-                Console.WriteLine($"This is your ID(save it--Or dont. see if i care.):{user.GetType().GUID}");
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
-            }
-            else if (answer == 2)
-            {
-                Console.WriteLine("Enter ID:");
-                string id = Console.ReadLine();
-                user = User.GetUserById(DB, id);
-                if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
-            }
-            
-
             //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
             //User user = User.ChooseUserType(name, phone, email, id, choice);
             //userDB.Create<Customer>(user as Customer);
-
-            int option = 0;
-            do
-            {
-                Console.WriteLine("Option 1");
-                Console.WriteLine("Option 2");
-                Console.WriteLine("Option 3");
-                Console.WriteLine("4. Exit");
-                Console.Write("Enter your option: ");
-                option = Convert.ToInt32(Console.ReadLine());
-
-                switch (option)
-                {
-                    case 1:
-                        BookEquipment(DB, user);
-                        break;
-                    case 2:
-                        Console.WriteLine("Option 2");
-                        break;
-                    case 3:
-                        Console.WriteLine("Option 3");
-                        break;
-                    case 4:
-                        Console.WriteLine("Exiting the menu...");
-                        break;
-                    default:
-                        Console.WriteLine("Invalid option, no workie.");
-                        break;
-                }
-                Console.WriteLine();
-            } while (option != 4);
-            
-        }
-        // Static methods for the program
-        static void BookEquipment(GymDatabaseContext DB, User user)
-        {
-            int i = 1;
-            foreach (Equipment equipment in DB.Read<Equipment>())
-            {
-                Console.WriteLine(i + ": " + equipment);
-                i++;
-            }
-            Console.WriteLine("Choose equipment:");
-            int choice = Convert.ToInt32(Console.ReadLine());
-            Equipment equipment1 = DB.Read<Equipment>()[choice - 1];
-            Console.WriteLine("Choose time:(yyyy-mm-dd hh:mm)");
-            DateTime time = Convert.ToDateTime(Console.ReadLine());
-            if (time < DateTime.Now)
-            {
-                Console.WriteLine("You can't book a time in the past.");
-                return;
-            }
-            TimeSlot timeSlot = new TimeSlot(time);
-            Console.WriteLine("Choose user:");
-            int j = 1;
-            Console.WriteLine("Select a category for your reservation:");
-            int k = 1;
-            foreach (string category in Enum.GetNames(typeof(Reservation.Category)))
-            {
-                Console.WriteLine(k + ": " + category);
-                k++;
-            }
-            Reservation.Category choice3 = (Reservation.Category)Convert.ToInt32(Console.ReadLine())-1;
-            equipment1.MakeReservation(choice3 , user, timeSlot);
-            equipment1.ViewTimeTable();
-        }
-    }
-}
+*/
