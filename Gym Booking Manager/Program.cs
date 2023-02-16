@@ -154,7 +154,8 @@ namespace Gym_Booking_Manager
                         BookEquipment(DB, user);
                         break;
                     case 2:
-                        Console.WriteLine("Option 2");
+                        GroupActivity activity = new GroupActivity();
+                        activity.CreateActivity(DB);
                         break;
                     case 3:
                         Console.WriteLine("Option 3");
@@ -174,9 +175,9 @@ namespace Gym_Booking_Manager
         static void BookEquipment(GymDatabaseContext DB, User user)
         {
             int i = 1;
-            foreach (Equipment equipment in DB.Read<Equipment>())
+            foreach (Equipment eq in DB.Read<Equipment>())
             {
-                Console.WriteLine(i + ": " + equipment);
+                Console.WriteLine(i + ": " + eq);
                 i++;
             }
             Console.WriteLine("Choose equipment:");
@@ -213,11 +214,14 @@ namespace Gym_Booking_Manager
                 Customer customer1 = DB.Read<Customer>()[choice2 - 1];
                 equipment1.MakeReservation(choice1, customer1, timeSlot);
                 equipment1.ViewTimeTable();
+                Console.WriteLine($"quantity: {equipment1.Quantity}.");
             }
             else
             {
                 equipment1.MakeReservation(choice1, user, timeSlot);
+                equipment1.Quantity--;
                 equipment1.ViewTimeTable();
+                Console.WriteLine($"quantity: {equipment1.Quantity}.");
             }
         }
     }

@@ -18,7 +18,7 @@ namespace Gym_Booking_Manager
         private bool largeEquipment;
 
         public string Name { get => name; }
-        public int Quantity { get => quantity; }
+        public int Quantity { get => quantity; set => quantity = value; }
 
         public Equipment(Category category, String name, int quantity, bool largeEquipment = true)
         {
