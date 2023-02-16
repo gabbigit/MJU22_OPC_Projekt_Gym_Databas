@@ -46,9 +46,9 @@ namespace Gym_Booking_Manager
             Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin, 3 for Service): ");
             int choice = int.Parse(Console.ReadLine());
             //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
+            User user = ChooseUserType(name, phone, email, id, choice, DB);
 
-
-            return ChooseUserType(name, phone, email, id, choice, DB);
+            return user;
         }
         public static void Remove(GymDatabaseContext DB, string id)
         {
@@ -190,8 +190,7 @@ namespace Gym_Booking_Manager
                         //BookEquipment(DB, user);
                         break;
                     case 2:
-                        GroupActivity activity = new GroupActivity();
-                        activity.CreateActivity(DB);
+                        Console.WriteLine("Option 2 TEST");
                         break;
                     case 3:
                         Console.WriteLine("Option 3");
