@@ -22,7 +22,7 @@ namespace Gym_Booking_Manager
             if (answer == 1)
             {
                 user = User.Create(DB);
-                Console.WriteLine($"This is your ID(save it--Or dont. see if i care.):{user.GetType().GUID}");
+                Console.WriteLine($"This is your ID(save it--Or dont. see if i care.):{user.Id}");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }
