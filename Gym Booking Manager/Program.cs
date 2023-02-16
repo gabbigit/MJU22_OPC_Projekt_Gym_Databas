@@ -32,6 +32,7 @@ namespace Gym_Booking_Manager
                         }
             */
             GymDatabaseContext DB = new GymDatabaseContext();
+            User user = null;
             Customer ruben = new Customer("Ruben", "011-131313", "ruben@test.se", Guid.NewGuid());
             Customer david = new Customer("David", "011-131313", "asd", Guid.NewGuid());
             //userDB.Create<Customer>(ruben);
@@ -111,7 +112,7 @@ namespace Gym_Booking_Manager
             Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
             int answer = Convert.ToInt32(Console.ReadLine());
             if (answer == 1) {
-                User user = User.Create(DB);
+                user = User.Create(DB);
                 Console.WriteLine($"This is your ID(save it--Or dont. see if i care.):{user.GetType().GUID}");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
@@ -120,10 +121,10 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
-                User user = User.GetUserById(DB, id);
+                user = User.GetUserById(DB, id);
                 if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
             }
-
+            
 
             //Console.WriteLine(userDB.Read<Customer>("Id", "00e19739-d644-4f05-a042-fec4a9ca946a"));
             //User user = User.ChooseUserType(name, phone, email, id, choice);
