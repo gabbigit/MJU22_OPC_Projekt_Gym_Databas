@@ -58,8 +58,9 @@ namespace Gym_Booking_Manager
             //DB.Create<Instructor>(instructor);
             //instructor.MakeReservation(Reservation.Category.PT, ruben, time);
             //instructor.ViewTimeTable();
-            //GroupActivity groupActivity = new GroupActivity("Activity 1", 2, time2, instructor, space, treadmill);
-            //GroupSchedule groupSchedule = new GroupSchedule(groupActivity);
+            Equipment equipmentT = new Equipment(Equipment.Category.Treadmill, "treadmill", 3);
+            GroupActivity groupActivity = new GroupActivity("Activity 1", 2, time2, instructor, space,equipmentT);
+            GroupSchedule groupSchedule = new GroupSchedule(groupActivity);
             //GroupActivity groupActivity2 = new GroupActivity("Activity 2", 3, time, instructor, space2, gym);
             //groupSchedule.AddActivity(groupActivity2);
             //groupActivity2.SignUp(ruben);
@@ -67,7 +68,7 @@ namespace Gym_Booking_Manager
             groupActivity.SignUp(david);
             groupSchedule.ViewSchedule();
             Space space1 = new Space(Space.Category.Lane, "Lane");
-            GroupActivity groupActivity1 = new GroupActivity("test", 3, time2, instructor, space1, treadmill);
+            GroupActivity groupActivity1 = new GroupActivity("test", 3, time2, instructor, space1, equipmentT);
             groupSchedule.AddActivity(groupActivity1);
             groupActivity.SignUp(ruben);
             groupSchedule.ViewSchedule();
