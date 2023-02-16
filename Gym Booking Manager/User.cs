@@ -192,6 +192,9 @@ namespace Gym_Booking_Manager
                         break;
                     case 2:
                         Console.WriteLine("Option 2 TEST");
+                        GroupActivity activity = new GroupActivity();
+                        Console.WriteLine();
+                        activity.CreateActivity(DB);
                         break;
                     case 3:
                         Console.WriteLine("Option 3");
@@ -262,6 +265,7 @@ namespace Gym_Booking_Manager
                         break;
                     case 2:
                         Console.WriteLine("Option 2");
+                        
                         break;
                     case 3:
                         Console.WriteLine("Option 3");
