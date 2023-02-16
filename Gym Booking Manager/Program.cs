@@ -29,7 +29,7 @@ namespace Gym_Booking_Manager
             else if (answer == 2)
             {
                 Console.WriteLine("Enter ID:");
-                string id = Console.ReadLine();
+                string id = Console.ReadLine(); // <--- Green.
                 user = User.GetUserById(DB, id);
                 if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
             }
