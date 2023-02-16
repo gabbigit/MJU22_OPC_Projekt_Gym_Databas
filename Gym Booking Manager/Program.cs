@@ -14,9 +14,11 @@ namespace Gym_Booking_Manager
         static void Main(string[] args)
         {
             /* ---------------------------------------------------->START<------------------------------------------------------------------ */
+
             GymDatabaseContext DB = new GymDatabaseContext();
             User user = null;
 
+            Console.WriteLine("Hi, there! Welcome to our program. Hope you will enjoy it.");
             Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
             int answer = Convert.ToInt32(Console.ReadLine());
             if (answer == 1)
@@ -33,8 +35,30 @@ namespace Gym_Booking_Manager
                 user = User.GetUserById(DB, id);
                 if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
             }
+            else
+            {
+                while(answer != 1 && answer != 2)
+               {
+                    Console.WriteLine("Please choose option (1) or (2).");
+                    int userChoice = Convert.ToInt32(Console.ReadLine());
+                    if (userChoice == 1)
+                    {
+                        user = User.Create(DB);
+                        Console.WriteLine($"This is your ID(save it--Or dont. see if i care.):{user.Id}");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                    }
+                    else if (userChoice == 2)
+                    {
+                        Console.WriteLine("Enter ID:");
+                        string id = Console.ReadLine(); // <--- Green.
+                        user = User.GetUserById(DB, id);
+                        if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
+                    }
+                }
+            }
 
-            /* ---------------------------------------------------->MENU<------------------------------------------------------------------ */
+             /* ---------------------------------------------------->MENU<------------------------------------------------------------------ */
             // Make sure 'user' is not null.
             while (user != null)
             {
