@@ -75,7 +75,7 @@ namespace Gym_Booking_Manager
             return $"Activity: {activityID}\ninstructor: {Instructor.Name}\n{timeSlot}\nSpace: {space.Name}" +
                 $"\nParticipants: {PartisipantsToString()} (Free slots left: {participantLimit - participants.Count})\nEquipment: {equipment.Name}";
         }
-        public GroupActivity CreateActivity(GymDatabaseContext DB)
+        public  GroupActivity CreateActivity(GymDatabaseContext DB)
         {
             Console.WriteLine("Enter activity ID:");
             activityID = Console.ReadLine();

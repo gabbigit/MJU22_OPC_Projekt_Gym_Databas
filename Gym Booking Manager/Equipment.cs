@@ -121,9 +121,9 @@ namespace Gym_Booking_Manager
         public static void BookEquipment(GymDatabaseContext DB, User user)
         {
             int i = 1;
-            foreach (Equipment equipment in DB.Read<Equipment>())
+            foreach (Equipment eq in DB.Read<Equipment>())
             {
-                Console.WriteLine(i + ": " + equipment);
+                Console.WriteLine(i + ": " + eq);
                 i++;
             }
             Console.WriteLine("Choose equipment:");
@@ -146,9 +146,29 @@ namespace Gym_Booking_Manager
                 Console.WriteLine(k + ": " + category);
                 k++;
             }
-            Reservation.Category choice3 = (Reservation.Category)Convert.ToInt32(Console.ReadLine()) - 1;
-            equipment1.MakeReservation(choice3, user, timeSlot);
-            equipment1.ViewTimeTable();
+            Reservation.Category choice1 = (Reservation.Category)Convert.ToInt32(Console.ReadLine()) - 1;
+            if (user.GetType().Name == "Admin" || user.GetType().Name == "Staff")
+            {
+                j = 1;
+                Console.WriteLine("Pick a customer to make the resservation for:");
+                foreach (Customer customer in DB.Read<Customer>())
+                {
+                    Console.WriteLine(j + ": " + customer);
+                    j++;
+                }
+                int choice2 = Convert.ToInt32(Console.ReadLine());
+                Customer customer1 = DB.Read<Customer>()[choice2 - 1];
+                equipment1.MakeReservation(choice1, customer1, timeSlot);
+                equipment1.ViewTimeTable();
+                Console.WriteLine($"quantity: {equipment1.Quantity}.");
+            }
+            else
+            {
+                equipment1.MakeReservation(choice1, user, timeSlot);
+                equipment1.Quantity--;
+                equipment1.ViewTimeTable();
+                Console.WriteLine($"quantity: {equipment1.Quantity}.");
+            }
         }
     }
 }

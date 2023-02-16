@@ -190,7 +190,8 @@ namespace Gym_Booking_Manager
                         //BookEquipment(DB, user);
                         break;
                     case 2:
-                        Console.WriteLine("Option 2");
+                        GroupActivity activity = new GroupActivity();
+                        activity.CreateActivity(DB);
                         break;
                     case 3:
                         Console.WriteLine("Option 3");
