@@ -29,14 +29,11 @@ namespace Gym_Booking_Manager
         }
         public enum Category
         {
-            Machines,
-            Gym,
-            Bench,
-            Dumbbells,
-            Treadmill,
-            Rackets,
-            PT,
-            Coach
+            Large_Equipment,
+            Sports_Equipment,
+            Space,
+            Coach,
+            
         }
 
         public override string ToString()
