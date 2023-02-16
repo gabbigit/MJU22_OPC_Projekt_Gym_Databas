@@ -12,7 +12,7 @@ using static Gym_Booking_Manager.LocalStorage;
 #endif
 namespace Gym_Booking_Manager
 {
-    internal abstract class User : ICSVable
+    internal abstract class User : ICSVable, IReservingEntity
     {
         public string name { get; set; }
         public string phone { get; set; }

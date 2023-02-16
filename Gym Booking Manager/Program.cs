@@ -107,11 +107,11 @@ namespace Gym_Booking_Manager
             /* ---------------------------------------------------->START<------------------------------------------------------------------ */
             // user.GetType().Name;
 
-
+            User user = null;
             Console.WriteLine("Do you want to create a new user(1) or select a existing one(2)?");
             int answer = Convert.ToInt32(Console.ReadLine());
             if (answer == 1) {
-                User user = User.Create(DB);
+                user = User.Create(DB);
                 Console.WriteLine($"This is your ID(save it--Or dont. see if i care.):{user.GetType().GUID}");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
@@ -120,7 +120,7 @@ namespace Gym_Booking_Manager
             {
                 Console.WriteLine("Enter ID:");
                 string id = Console.ReadLine();
-                User user = User.GetUserById(DB, id);
+                user = User.GetUserById(DB, id);
                 if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
             }
 
@@ -142,7 +142,7 @@ namespace Gym_Booking_Manager
                 switch (option)
                 {
                     case 1:
-                        BookEquipment(DB);
+                        BookEquipment(DB, user);
                         break;
                     case 2:
                         Console.WriteLine("Option 2");
@@ -162,7 +162,7 @@ namespace Gym_Booking_Manager
             
         }
         // Static methods for the program
-        static void BookEquipment(GymDatabaseContext DB)
+        static void BookEquipment(GymDatabaseContext DB, User user)
         {
             int i = 1;
             foreach (Equipment equipment in DB.Read<Equipment>())
@@ -183,13 +183,6 @@ namespace Gym_Booking_Manager
             TimeSlot timeSlot = new TimeSlot(time);
             Console.WriteLine("Choose user:");
             int j = 1;
-            foreach (Customer customer in DB.Read<Customer>())
-            {
-                Console.WriteLine(j + ": " + customer);
-                j++;
-            }
-            int choice2 = Convert.ToInt32(Console.ReadLine());
-            Customer user = DB.Read<Customer>()[choice2 - 1];
             Console.WriteLine("Select a category for your reservation:");
             int k = 1;
             foreach (string category in Enum.GetNames(typeof(Reservation.Category)))
