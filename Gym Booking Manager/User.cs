@@ -277,6 +277,7 @@ namespace Gym_Booking_Manager
                 Console.WriteLine();
             } while (option != 4);
         }
+        // ViewLogg() method NYI
     }
 
     internal class Service : User, ICSVable, IComparable<Service>
@@ -347,6 +348,7 @@ namespace Gym_Booking_Manager
                 Console.WriteLine();
             } while (option != 4);
         }
+        //public method RepairItem() ------> NYI: Not Yet Implemented
     }
 
     internal class Customer : User, ICSVable, IComparable<Customer>, IReservingEntity
