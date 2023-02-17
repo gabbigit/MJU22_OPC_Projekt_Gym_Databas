@@ -66,5 +66,12 @@
 |                     |          |                                                             |
 | Change User Details | User?    | (optional) A user may want to be able to change their own   |
 |                     |          | user details.                                               |
+|                     |          |                                                             |	
+| Charge for repair   | Service  | (optional) Service workers charge a fee for repairing       |
+|					  |			 |	equipment.												   |
 |                     |          |                                                             |
+| New Group Activity  | User     | (optional)Members will recieve a notification               |
+|                     |          | when a new group activity is added.                         |
+|                     |          |                                                             |
+| View User Schedule  | Staff    | (optional) Staff can view a user's schedule.                |
 | ------------------- | -------- | ----------------------------------------------------------- |
