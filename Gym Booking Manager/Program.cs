@@ -36,8 +36,8 @@ namespace Gym_Booking_Manager
                 if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
             }
             else
-            {
-                while(answer != 1 && answer != 2)
+            {  // Repeats until user write correct input
+                while (answer != 1 && answer != 2)
                {
                     Console.WriteLine("Please choose option (1) or (2).");
                     int userChoice = Convert.ToInt32(Console.ReadLine());
@@ -51,7 +51,7 @@ namespace Gym_Booking_Manager
                     else if (userChoice == 2)
                     {
                         Console.WriteLine("Enter ID:");
-                        string id = Console.ReadLine(); // <--- Green.
+                        string id = Console.ReadLine();
                         user = User.GetUserById(DB, id);
                         if (user == null) { Console.WriteLine("Get Bent.(No user)."); }
                     }
